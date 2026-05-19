@@ -359,11 +359,11 @@ nav {
 .lang-option.active { color: var(--amber); }
 
 /* MOAI PEEK */
-.moai-peek { position: fixed; z-index: 50; pointer-events: none; width: 110px; opacity: 0; }
-.moai-peek-bottom { bottom: -220px; left: 48px; }
-.moai-peek-top { top: -120px; right: 48px; transform: rotate(180deg); }
-@keyframes peekFromBottom { 0%{opacity:0;transform:translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:translateY(-148px)} 60%{opacity:1;transform:translateY(-148px)} 82%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(0)} }
-@keyframes peekFromTop { 0%{opacity:0;transform:rotate(180deg) translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:rotate(180deg) translateY(-72px)} 60%{opacity:1;transform:rotate(180deg) translateY(-72px)} 80%{opacity:1;transform:rotate(180deg) translateY(0)} 100%{opacity:0;transform:rotate(180deg) translateY(0)} }
+.moai-peek { position: fixed; z-index: 50; pointer-events: none; width: 80px; opacity: 0; }
+.moai-peek-bottom { bottom: -320px; left: 48px; }
+.moai-peek-top { top: -320px; right: 48px; transform: rotate(180deg); }
+@keyframes peekFromBottom { 0%{opacity:0;transform:translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:translateY(-180px)} 60%{opacity:1;transform:translateY(-180px)} 82%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(0)} }
+@keyframes peekFromTop { 0%{opacity:0;transform:rotate(180deg) translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:rotate(180deg) translateY(-180px)} 60%{opacity:1;transform:rotate(180deg) translateY(-180px)} 80%{opacity:1;transform:rotate(180deg) translateY(0)} 100%{opacity:0;transform:rotate(180deg) translateY(0)} }
 .moai-peek-bottom.active { animation: peekFromBottom 9s ease-in-out forwards; }
 .moai-peek-top.active { animation: peekFromTop 9s ease-in-out forwards; }
 
@@ -390,8 +390,8 @@ nav {
 <canvas id="rain-canvas"></canvas>
 <div class="bg-grain"></div>
 
-<img class="moai-peek moai-peek-bottom" id="peek-rise" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/peek_backpack_zbopyc.png" alt="">
-<img class="moai-peek moai-peek-top" id="peek-tokenomics" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/peek_hula_j3yfvy.png" alt="">
+<img class="moai-peek moai-peek-bottom" id="peek-rise" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779175504/hero_stoic_r2a7x2.png" alt="">
+<img class="moai-peek moai-peek-top" id="peek-tokenomics" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779175504/hero_stoic_r2a7x2.png" alt="">
 
 <nav>
   <span class="nav-logo" onclick="showTab('home')">🗿 $STOIC</span>
@@ -522,7 +522,7 @@ nav {
       <a href="https://x.com/stoiconrise/status/2056349024320631272?s=20" target="_blank" style="display:block;text-decoration:none;position:relative;">
         <img class="film-featured-thumb" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779123296/Untitled_n2lzd6.png" alt="Wen Certified?">
         <div class="film-featured-play-icon">▶</div>
-        <div class="film-rain-overlay"><canvas class="film-rain-canvas" id="film-rain-canvas"></canvas></div>
+        
         <div class="film-featured-overlay">
           <div class="film-featured-badge">LATEST RELEASE</div>
           <div class="film-featured-ep">EP. 09</div>
@@ -650,7 +650,7 @@ function startFilmRainFull() {
   if (!overlay) {
     overlay = document.createElement('canvas');
     overlay.id = 'film-rain-global';
-    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:10;opacity:0;transition:opacity 1s ease;';
+    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:2;opacity:0;transition:opacity 1s ease;';
     document.body.appendChild(overlay);
   }
 
