@@ -650,13 +650,13 @@ function startFilmRainFull() {
   if (!overlay) {
     overlay = document.createElement('canvas');
     overlay.id = 'film-rain-global';
-    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:4;opacity:0;transition:opacity 1s ease;mix-blend-mode:screen;';
+    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:4;opacity:0;transition:opacity 1s ease;mix-blend-mode:overlay;';
     document.body.appendChild(overlay);
   }
 
   overlay.width = window.innerWidth;
   overlay.height = window.innerHeight - 52;
-  overlay.style.opacity = '0.7';
+  overlay.style.opacity = '0.45';
 
   const ctx = overlay.getContext('2d');
   const drops = [];
@@ -679,7 +679,7 @@ function startFilmRainFull() {
       ctx.beginPath();
       ctx.moveTo(d.x, d.y);
       ctx.lineTo(d.x - 2, d.y + d.len);
-      ctx.strokeStyle = `rgba(190,220,255,${d.op})`;
+      ctx.strokeStyle = `rgba(255,255,255,${d.op})`;
       ctx.lineWidth = d.w;
       ctx.stroke();
       d.y += d.speed;
