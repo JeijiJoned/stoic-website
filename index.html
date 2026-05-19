@@ -370,18 +370,44 @@ nav {
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 768px) {
-  nav { padding: 0 1rem; }
-  .tab { padding: 0 0.65rem; font-size: 10px; }
-  .hero-stoic { height: 55%; opacity: 0.45; }
-  .hero-title { font-size: 3.5rem; }
-  .film-featured-thumb { height: 240px; }
-  .film-thumb-link { width: 120px; min-width: 120px; height: 90px; }
-  .film-card { min-height: 90px; }
+  nav { padding: 0 0.75rem; gap: 0.5rem; }
+  .nav-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex: 1; }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .tab { padding: 0 0.75rem; font-size: 10px; white-space: nowrap; flex-shrink: 0; }
+  .nav-logo { font-size: 11px; white-space: nowrap; }
+  .lang-dropdown { display: none; }
+  .nav-buy { font-size: 10px; padding: 0.3rem 0.6rem; white-space: nowrap; }
+  .hero-content { padding: 2rem 1.25rem; max-width: 100%; }
+  .hero-stoic { height: 50%; opacity: 0.35; right: -5%; }
+  .hero-title { font-size: 3.2rem; }
+  .hero-eyebrow { font-size: 8px; letter-spacing: 0.2em; }
+  .hero-tagline { font-size: 10px; letter-spacing: 0.12em; }
+  .ca-row { width: 100%; }
+  .ca-text { font-size: 9px; letter-spacing: 0.02em; padding: 0.55rem 0.6rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: calc(100vw - 110px); }
+  .ca-copy { font-size: 9px; padding: 0.55rem 0.6rem; flex-shrink: 0; }
+  .hero-links { flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+  .dot { display: none; }
+  .film-featured-thumb { height: 200px; }
+  .film-featured-overlay { padding: 1.25rem; }
+  .film-featured-title { font-size: 1.4rem; }
+  .film-featured-desc { font-size: 11px; margin-bottom: 0.75rem; }
+  .film-thumb-link { width: 110px; min-width: 110px; height: 80px; }
+  .film-card { min-height: 80px; }
   .film-desc { display: none; }
+  .film-info { padding: 0.85rem 1rem; }
+  .film-title { font-size: 12px; }
   .meme-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
-  .inner, .inner-wide { padding: 3rem 1.25rem 4rem; }
+  .inner, .inner-wide { padding: 2.5rem 1.25rem 3.5rem; }
+  .footer-links { gap: 1rem; flex-wrap: wrap; }
+  .footer-link { font-size: 9px; letter-spacing: 0.1em; }
+  .footer-content { padding: 2.5rem 1.25rem 2rem; }
+  .footer-vending { display: none; }
 }
-@media (max-width: 400px) { .hero-title { font-size: 2.8rem; } .ca-text { font-size: 9px; } }
+@media (max-width: 400px) {
+  .hero-title { font-size: 2.5rem; }
+  .ca-text { font-size: 8px; max-width: calc(100vw - 100px); }
+  .film-featured-thumb { height: 160px; }
+}
 </style>
 </head>
 <body>
