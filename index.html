@@ -514,7 +514,7 @@ nav {
 <div class="page" id="films">
   <div class="section-bg" style="background-image:url('https://res.cloudinary.com/dqgkxarez/image/upload/v1779175503/bg_films_nzi1tx.png');background-position:center top;"></div>
   <div class="section-bg-overlay"></div>
-  <div class="inner-wide" style="position:relative;z-index:2;">
+  <div class="inner-wide" style="position:relative;z-index:3;">
     <p class="page-label" data-i18n="films_title">FILMS</p>
 
     <!-- FEATURED EP09 -->
@@ -650,13 +650,16 @@ function startFilmRainFull() {
   if (!overlay) {
     overlay = document.createElement('canvas');
     overlay.id = 'film-rain-global';
-    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:4;opacity:0;transition:opacity 1s ease;mix-blend-mode:overlay;';
-    document.body.appendChild(overlay);
+    overlay.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;opacity:0;transition:opacity 1s ease;';
+    // Move overlay inside films page so it's within the stacking context
+    const filmsPage = document.getElementById('films');
+    if (filmsPage) filmsPage.appendChild(overlay);
+    else document.body.appendChild(overlay);
   }
 
   overlay.width = window.innerWidth;
-  overlay.height = window.innerHeight - 52;
-  overlay.style.opacity = '0.45';
+  overlay.height = Math.max(window.innerHeight, document.getElementById('films')?.offsetHeight || window.innerHeight);
+  overlay.style.opacity = '0.7';
 
   const ctx = overlay.getContext('2d');
   const drops = [];
