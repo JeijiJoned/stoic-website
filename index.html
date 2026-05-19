@@ -540,6 +540,17 @@ nav {
 <div class="page" id="films">
   <div class="section-bg" style="background-image:url('https://res.cloudinary.com/dqgkxarez/image/upload/v1779175503/bg_films_nzi1tx.png');background-position:center top;"></div>
   <div class="section-bg-overlay"></div>
+
+  <!-- Sound toggle button -->
+  <button id="rain-sound-btn" onclick="toggleRainSound()" style="
+    position:fixed; bottom:1.5rem; right:1.5rem; z-index:200;
+    background:rgba(7,5,15,0.85); border:1px solid rgba(200,169,110,0.3);
+    border-radius:50%; width:44px; height:44px;
+    color:var(--amber); font-size:18px;
+    cursor:pointer; display:none;
+    align-items:center; justify-content:center;
+    backdrop-filter:blur(12px); transition:all 0.2s;
+  " title="Toggle rain sound">🔇</button>
   <div class="inner-wide" style="position:relative;z-index:3;">
     <p class="page-label" data-i18n="films_title">FILMS</p>
 
@@ -743,6 +754,9 @@ function startFilmRainFull() {
     src.connect(bp); bp.connect(hp); hp.connect(filmGain);
     filmGain.connect(filmAudioCtx.destination);
     src.start();
+    // Update button icon
+    const btn = document.getElementById('rain-sound-btn');
+    if(btn) btn.textContent = '🔊';
   } catch(e) {}
 }
 
@@ -781,8 +795,12 @@ function showTab(id){
   // Film rain — start/stop based on tab (click = user gesture, bypasses autoplay)
   if(id==='films'){
     setTimeout(startFilmRainFull, 100);
+    const btn = document.getElementById('rain-sound-btn');
+    if(btn) btn.style.display = 'flex';
   } else {
     stopFilmRainFull();
+    const btn = document.getElementById('rain-sound-btn');
+    if(btn) btn.style.display = 'none';
   }
 }
 
@@ -837,11 +855,69 @@ window.addEventListener('popstate',(e)=>{
   document.querySelector('[data-tab="'+tab+'"]').classList.add('active');
 });
 
+// Sound toggle for direct URL access
+let rainSoundMuted = false;
+function toggleRainSound() {
+  const btn = document.getElementById('rain-sound-btn');
+  if (!filmAudioCtx) {
+    // First click — start everything
+    startFilmRainFull();
+    rainSoundMuted = false;
+    if (btn) btn.textContent = '🔊';
+  } else if (rainSoundMuted) {
+    // Unmute
+    if (filmGain) filmGain.gain.linearRampToValueAtTime(0.12, filmAudioCtx.currentTime + 0.5);
+    rainSoundMuted = false;
+    if (btn) btn.textContent = '🔊';
+  } else {
+    // Mute
+    if (filmGain) filmGain.gain.linearRampToValueAtTime(0, filmAudioCtx.currentTime + 0.3);
+    rainSoundMuted = true;
+    if (btn) btn.textContent = '🔇';
+  }
+}
+
 window.addEventListener('DOMContentLoaded',()=>{
   const path=window.location.pathname.replace('/','').trim();
   const validTabs=['home','rise','tokenomics','memes','films'];
   const tab=validTabs.includes(path)?path:'home';
-  if(tab!=='home')showTab(tab);
+  if(tab!=='home') showTab(tab);
+
+  // If direct /films URL — show sound button, start rain visual only (no audio until click)
+  if(tab==='films'){
+    const btn = document.getElementById('rain-sound-btn');
+    if(btn){
+      btn.style.display = 'flex';
+      btn.textContent = '🔇';
+    }
+    // Start visual rain without audio
+    setTimeout(()=>{
+      const filmsPage = document.getElementById('films');
+      let overlay = document.getElementById('film-rain-global');
+      if(!overlay){
+        overlay = document.createElement('canvas');
+        overlay.id = 'film-rain-global';
+        overlay.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;opacity:0;transition:opacity 1s ease;';
+        if(filmsPage) filmsPage.appendChild(overlay);
+      }
+      overlay.width = window.innerWidth;
+      overlay.height = Math.max(window.innerHeight, filmsPage?.offsetHeight || window.innerHeight);
+      overlay.style.opacity = '0.7';
+      const ctx = overlay.getContext('2d');
+      const drops = [];
+      for(let i=0;i<350;i++) drops.push({x:Math.random()*overlay.width,y:Math.random()*overlay.height,len:Math.random()*30+15,speed:Math.random()*9+6,op:Math.random()*0.6+0.3,w:Math.random()*1.2+0.5});
+      function loop(){
+        ctx.clearRect(0,0,overlay.width,overlay.height);
+        drops.forEach(d=>{
+          ctx.beginPath(); ctx.moveTo(d.x,d.y); ctx.lineTo(d.x-2,d.y+d.len);
+          ctx.strokeStyle=`rgba(255,255,255,${d.op})`; ctx.lineWidth=d.w; ctx.stroke();
+          d.y+=d.speed; if(d.y>overlay.height+d.len){d.y=-d.len;d.x=Math.random()*overlay.width;}
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    }, 200);
+  }
 });
 </script>
 </body>
