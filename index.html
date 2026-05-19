@@ -1,37 +1,27 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/jeiji/Downloads/index_4.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>$STOIC — rise.rich</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-/* Prevent text selection / typing cursor everywhere */
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  cursor: default;
-}
-.ca-text {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  user-select: text;
-}
+* { -webkit-user-select: none; -moz-user-select: none; user-select: none; cursor: default; }
+.ca-text { -webkit-user-select: text; -moz-user-select: text; user-select: text; }
 a, button, .lnk.on, .tab, .lang-option, .lang-trigger, .ca-copy,
-.nav-logo, .film-thumb-link, .films-watch-btn, .load-more-btn, .lightbox-close {
+.nav-logo, .film-thumb-link, .films-watch-btn, .film-featured-btn, .lightbox-close, .meme-card,
+.footer-link, .nav-buy, .film-card a, .film-featured a {
   cursor: pointer !important;
 }
 :root {
-  --bg:     #0d0818;
-  --bg2:    rgba(12,8,28,0.75);
-  --border: rgba(255,255,255,0.12);
-  --purple: #e8deff;
-  --muted:  rgba(255,255,255,0.45);
-  --light:  #ffffff;
-  --accent: #ffffff;
+  --bg: #07050f;
+  --bg2: rgba(7,5,15,0.82);
+  --border: rgba(255,255,255,0.10);
+  --amber: #c8a96e;
+  --muted: rgba(255,255,255,0.40);
+  --light: #f0ece4;
+  --accent: #f0ece4;
 }
 html, body {
   min-height: 100vh;
@@ -41,808 +31,447 @@ html, body {
   font-weight: 300;
   overflow-x: hidden;
 }
-.bg-sunset {
-  position: fixed; inset: 0; z-index: 0;
-  background:
-    linear-gradient(180deg,
-      #050310 0%,
-      #0e0828 12%,
-      #1e0e48 22%,
-      #3d1265 30%,
-      #6e1878 36%,
-      #a02878 41%,
-      #cc4878 46%,
-      #d85878 51%,
-      #c86070 55%,
-      #b85878 59%,
-      #8a2868 65%,
-      #4a1050 75%,
-      #1a0830 88%,
-      #080318 100%
-    );
-  pointer-events: none;
-}
-
-/* stars */
-.bg-stars {
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.bg-stars::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 10% 8%, rgba(255,255,255,0.9) 0%, transparent 100%),
-    radial-gradient(1px 1px at 20% 15%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 30% 5%, rgba(255,255,255,0.8) 0%, transparent 100%),
-    radial-gradient(1px 1px at 40% 12%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 7%, rgba(255,255,255,0.9) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 60% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 70% 4%, rgba(255,255,255,0.8) 0%, transparent 100%),
-    radial-gradient(1px 1px at 80% 14%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 9%, rgba(255,255,255,0.9) 0%, transparent 100%),
-    radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25% 18%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 45% 22%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 65% 17%, rgba(255,255,255,0.8) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 92% 6%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 5% 12%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 75% 8%, rgba(255,255,255,0.9) 0%, transparent 100%),
-    radial-gradient(1px 1px at 35% 3%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 55% 16%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 95% 11%, rgba(255,255,255,0.8) 0%, transparent 100%);
-  opacity: 1;
-}
-
-/* clouds */
-.bg-clouds {
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.cloud {
-  position: absolute;
-  border-radius: 50px;
-  opacity: 0.28;
-}
-
-/* top clouds — night, blue-ish */
-.cloud-1 {
-  width: 220px; height: 55px;
-  background: radial-gradient(ellipse at 50% 60%, #b8c8e8, transparent 70%);
-  top: 6%; left: 5%;
-  border-radius: 60px;
-  filter: blur(8px);
-}
-.cloud-2 {
-  width: 160px; height: 40px;
-  background: radial-gradient(ellipse at 50% 60%, #c0c8f0, transparent 70%);
-  top: 10%; right: 8%;
-  filter: blur(6px);
-}
-
-/* mid clouds — purple-pink transition */
-.cloud-3 {
-  width: 280px; height: 70px;
-  background: radial-gradient(ellipse at 50% 60%, #e8b0d8, transparent 70%);
-  top: 30%; left: -3%;
-  filter: blur(10px);
-  opacity: 0.22;
-}
-.cloud-4 {
-  width: 200px; height: 50px;
-  background: radial-gradient(ellipse at 50% 60%, #f0b8c8, transparent 70%);
-  top: 28%; right: 2%;
-  filter: blur(8px);
-  opacity: 0.2;
-}
-
-/* horizon clouds — pink-cream warm */
-.cloud-5 {
-  width: 320px; height: 80px;
-  background: radial-gradient(ellipse at 40% 50%, #f8d0b0, #f0a890, transparent 70%);
-  top: 48%; left: 10%;
-  filter: blur(12px);
-  opacity: 0.25;
-}
-.cloud-6 {
-  width: 260px; height: 65px;
-  background: radial-gradient(ellipse at 60% 50%, #f8c8b0, transparent 70%);
-  top: 45%; right: 5%;
-  filter: blur(10px);
-  opacity: 0.22;
-}
-.cloud-7 {
-  width: 180px; height: 45px;
-  background: radial-gradient(ellipse at 50% 60%, #f8d8c0, transparent 70%);
-  top: 52%; left: 40%;
-  filter: blur(8px);
-  opacity: 0.18;
-}
-
-/* moon */
-.bg-moon {
-  position: fixed;
-  top: 6%;
-  left: 12%;
-  width: 42px;
-  height: 42px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.bg-moon::before {
-  content: '';
-  position: absolute;
-  width: 42px; height: 42px;
-  background: radial-gradient(circle, #e8e0f8 0%, #d0c8f0 40%, transparent 70%);
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(200,180,255,0.4);
-}
-
-.bg-moon::after {
-  content: '';
-  position: absolute;
-  width: 32px; height: 32px;
-  background: #1a1040;
-  border-radius: 50%;
-  top: -4px;
-  left: 10px;
-}
-
-/* mountain silhouette */
-.bg-mountain {
-  position: fixed;
-  bottom: 0;
-  left: 0; right: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.35;
-}
-
-/* dark overlay for text readability */
-.bg-overlay {
-  position: fixed; inset: 0; z-index: 1;
-  background: linear-gradient(180deg,
-    rgba(4,2,14,0.55) 0%,
-    rgba(4,2,14,0.15) 35%,
-    rgba(4,2,14,0.15) 65%,
-    rgba(4,2,14,0.65) 100%
-  );
-  pointer-events: none;
-}
 .bg-grain {
-  position: fixed; inset: 0; z-index: 1;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none; opacity: 0.7;
+  position: fixed; inset: 0; z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.6;
 }
-.bg-mountain {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  z-index: 1; pointer-events: none; opacity: 0.1;
+#rain-canvas { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.25; }
+.section-bg { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; }
+.section-bg-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(7,5,15,0.5) 0%, rgba(7,5,15,0.65) 60%, rgba(7,5,15,0.95) 100%);
+}
+
+/* AMBIENT GLOW — warm amber from store direction */
+.hero-ambient {
+  position: absolute; z-index: 1; pointer-events: none;
+  right: 20%; bottom: 0; width: 600px; height: 500px;
+  background: radial-gradient(ellipse at 60% 80%, rgba(200,140,60,0.18) 0%, rgba(200,140,60,0.06) 40%, transparent 70%);
+  filter: blur(40px);
+}
+
+/* Text readability fixes */
+.hero-eyebrow { text-shadow: 0 0 20px rgba(0,0,0,0.8); }
+.hero-title { text-shadow: 0 2px 30px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.5); }
+.hero-tagline { text-shadow: 0 1px 10px rgba(0,0,0,0.8); }
+.row-title { text-shadow: 0 1px 8px rgba(0,0,0,0.6); }
+.row-text { text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+.page-label { text-shadow: 0 1px 6px rgba(0,0,0,0.6); }
+.film-featured-title { text-shadow: 0 2px 20px rgba(0,0,0,0.9); }
+.film-featured-desc { text-shadow: 0 1px 8px rgba(0,0,0,0.7); }
+
+/* FILM RAIN OVERLAY */
+.film-rain-overlay {
+  position: absolute; inset: 0; z-index: 10;
+  pointer-events: none; overflow: hidden; border-radius: 12px;
+  opacity: 0; transition: opacity 0.8s ease;
+}
+.film-rain-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
 }
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2.5rem; height: 52px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(5,3,15,0.6);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px);
+  background: rgba(7,5,15,0.8); backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-.nav-logo { font-size: 13px; letter-spacing: 0.2em; color: var(--accent); cursor: pointer; }
+.nav-logo { font-size: 13px; letter-spacing: 0.2em; color: var(--accent); }
 .nav-tabs { display: flex; }
 .tab {
-  background: none; border: none;
-  border-bottom: 2px solid transparent;
-  color: var(--muted);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; letter-spacing: 0.2em;
-  padding: 0 1.25rem; height: 52px;
-  cursor: pointer; transition: all 0.2s;
+  background: none; border: none; border-bottom: 2px solid transparent;
+  color: var(--muted); font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em; padding: 0 1.25rem; height: 52px;
+  transition: all 0.2s;
 }
-.tab:hover { color: var(--purple); }
-.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.nav-buy { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); opacity: 0.35; cursor: default; }
-
-.page { display: none; min-height: 100vh; padding-top: 52px; position: relative; z-index: 2; }
+.tab:hover { color: var(--amber); }
+.tab.active { color: var(--accent); border-bottom-color: var(--amber); }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-buy {
+  font-size: 11px; letter-spacing: 0.15em; color: var(--amber); text-decoration: none;
+  border: 1px solid rgba(200,169,110,0.35); border-radius: 5px; padding: 0.35rem 0.85rem;
+  transition: all 0.2s;
+}
+.nav-buy:hover { background: rgba(200,169,110,0.1); }
+.page { display: none; min-height: 100vh; padding-top: 52px; position: relative; z-index: 3; }
 .page.active { display: block; }
-#home { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 52px 1rem 3rem; min-height: 100vh; }
+#home { display: none; flex-direction: column; padding-top: 52px; min-height: 100vh; }
 #home.active { display: flex; }
 
-/* SEAMLESS PARADE — the real fix */
-.parade-outer {
-  width: 100%;
-  overflow: hidden;
-  margin: 2rem 0 0.5rem;
-  background: transparent;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+/* HERO */
+.hero-wrap {
+  position: relative; min-height: calc(100vh - 52px);
+  display: flex; align-items: center; overflow: hidden;
 }
-
-/* Two strips, each containing the GIF multiple times */
-.parade-strip {
-  display: flex;
-  width: max-content;
-  align-items: flex-end;
-  animation: scroll-left 48s linear infinite;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://res.cloudinary.com/dqgkxarez/image/upload/v1779175504/hero_bg_dep15y.png');
+  background-size: cover; background-position: center right; z-index: 0;
 }
-
-.parade-strip img {
-  height: 220px;
-  width: auto;
-  display: block;
-  flex-shrink: 0;
+.hero-bg-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, rgba(7,5,15,0.95) 0%, rgba(7,5,15,0.75) 40%, rgba(7,5,15,0.25) 70%, rgba(7,5,15,0.05) 100%);
 }
-
-/* The trick: two strips back to back, scroll exactly one strip width */
-.parade-inner {
-  display: flex;
-  width: max-content;
-  animation: scroll-left 48s linear infinite;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
+.hero-bg-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 180px; z-index: 1;
+  background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
 }
-
-.parade-inner img {
-  height: 220px;
-  width: auto;
-  display: block;
-  flex-shrink: 0;
-  -webkit-mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black 60%, transparent 100%);
-  mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black 60%, transparent 100%);
-  filter: drop-shadow(0 0 0px transparent);
+.hero-stoic {
+  position: absolute; right: 0; bottom: 0; height: 88%; z-index: 2;
+  object-fit: contain; object-position: bottom; pointer-events: none;
+  opacity: 0; animation: fadeInStoic 1.2s ease 0.6s forwards;
 }
-
-@keyframes scroll-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@keyframes fadeInStoic {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 0.9; transform: translateY(0); }
 }
-
-.ground-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(180,140,220,0.12) 20%, rgba(180,140,220,0.12) 80%, transparent);
+.hero-content { position: relative; z-index: 3; padding: 0 5vw; max-width: 580px; }
+.hero-eyebrow {
+  font-size: 9px; letter-spacing: 0.45em; color: var(--amber); margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
 }
-
-.hero-ticker {
-  font-size: clamp(3.5rem, 12vw, 6rem);
-  font-weight: 300; letter-spacing: 0.15em;
-  color: var(--accent); line-height: 1;
-  margin-top: 1.5rem;
-  opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards;
-  text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(200,150,255,0.2);
+.hero-title {
+  font-size: clamp(4rem, 11vw, 7rem); font-weight: 300; letter-spacing: 0.08em;
+  color: var(--accent); line-height: 0.95; margin-bottom: 1.2rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards;
 }
-.hero-tag {
-  font-size: 11px; letter-spacing: 0.28em; color: var(--muted); margin-top: 0.75rem;
-  opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards;
+.hero-tagline {
+  font-size: 11px; letter-spacing: 0.25em; color: var(--muted); margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.45s forwards;
 }
-.ca-wrap {
-  margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-  opacity: 0; animation: fadeUp 0.9s ease 0.4s forwards;
-}
-.ca-label { font-size: 9px; letter-spacing: 0.3em; color: var(--muted); }
+.hero-ca { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards; }
+.ca-label { font-size: 9px; letter-spacing: 0.35em; color: var(--muted); }
 .ca-row {
   display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
-  background: rgba(5,3,15,0.55); backdrop-filter: blur(16px);
+  background: rgba(7,5,15,0.7); backdrop-filter: blur(16px); width: fit-content;
 }
-.ca-text { font-size: 12px; letter-spacing: 0.05em; color: var(--purple); padding: 0.55rem 1rem; }
+.ca-text { font-size: 12px; letter-spacing: 0.04em; color: rgba(200,169,110,0.8); padding: 0.55rem 1rem; }
 .ca-copy {
   background: none; border: none; border-left: 1px solid var(--border);
   color: var(--muted); font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; letter-spacing: 0.15em; padding: 0.55rem 0.85rem;
-  cursor: pointer; transition: all 0.2s;
+  font-size: 10px; letter-spacing: 0.15em; padding: 0.55rem 0.85rem; transition: all 0.2s;
 }
 .ca-copy:hover { color: var(--accent); }
-.links-row {
-  display: flex; align-items: center; gap: 1.75rem; margin-top: 2rem;
-  opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards;
+.hero-links {
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.9s ease 0.75s forwards;
 }
-.lnk { font-size: 10px; letter-spacing: 0.2em; text-decoration: none; transition: color 0.2s; position: relative; }
-.lnk.on  { color: var(--purple); cursor: pointer; }
-.lnk.on:hover { color: var(--accent); }
-.lnk.off { color: var(--muted); cursor: default; }
-.lnk.off::after {
-  content: var(--cs-text, 'COMING SOON');
-  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-  background: var(--bg2); border: 1px solid var(--border); color: var(--muted);
-  font-size: 9px; letter-spacing: 0.12em; padding: 3px 8px; border-radius: 4px;
-  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s;
-}
-.lnk.off:hover::after { opacity: 1; }
+.lnk { font-size: 10px; letter-spacing: 0.2em; text-decoration: none; transition: color 0.2s; }
+.lnk.on { color: var(--muted); }
+.lnk.on:hover { color: var(--amber); }
 .dot { color: var(--border); }
 
-.inner { max-width: 640px; margin: 0 auto; padding: 4.5rem 2rem 4rem; }
-.page-label { font-size: 9px; letter-spacing: 0.35em; color: var(--muted); margin-bottom: 2.5rem; }
-.row { border-top: 1px solid rgba(255,255,255,0.08); padding: 1.6rem 0; }
-.row:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+/* PARADE */
+.parade-section {
+  width: 100%; overflow: hidden; padding: 1.5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(7,5,15,0.7);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.parade-inner {
+  display: flex; width: max-content;
+  animation: scroll-left 48s linear infinite; will-change: transform;
+}
+.parade-inner img { height: 110px; width: auto; display: block; flex-shrink: 0; }
+@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* FOOTER */
+.footer-section {
+  position: relative; overflow: hidden; min-height: 280px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; align-items: flex-end;
+  background: linear-gradient(to top, rgba(7,5,15,1) 0%, rgba(7,5,15,0.5) 100%);
+}
+.footer-vending {
+  position: absolute; right: 8%; bottom: 0; height: 75%; z-index: 0;
+  object-fit: contain; object-position: bottom; opacity: 0.3; pointer-events: none;
+}
+.footer-content {
+  position: relative; z-index: 1; width: 100%; padding: 3.5rem 5vw 2.5rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.footer-logo { font-size: 11px; letter-spacing: 0.3em; color: var(--amber); opacity: 0.7; }
+.footer-tagline { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-link { font-size: 10px; letter-spacing: 0.2em; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
+.footer-link:hover { color: var(--amber); }
+.footer-copy { font-size: 9px; letter-spacing: 0.12em; color: rgba(255,255,255,0.12); }
+
+/* INNER */
+.inner { max-width: 680px; margin: 0 auto; padding: 4.5rem 2rem 5rem; }
+.inner-wide { max-width: 960px; margin: 0 auto; padding: 4.5rem 2rem 5rem; }
+.page-label { font-size: 9px; letter-spacing: 0.4em; color: var(--amber); margin-bottom: 2.5rem; opacity: 0.7; }
+.row { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.6rem 0; }
+.row:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
 .row-title { font-size: 13px; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.65rem; font-weight: 400; }
-.row-text { font-size: 13px; line-height: 1.85; color: var(--purple); }
+.row-text { font-size: 13px; line-height: 1.9; color: var(--muted); }
 .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.85rem; }
 .pill { font-size: 10px; letter-spacing: 0.12em; color: var(--muted); border: 1px solid var(--border); border-radius: 100px; padding: 0.25rem 0.7rem; }
-.meme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
-.meme-card { aspect-ratio: 1; border: 1px solid var(--border); border-radius: 8px; background: var(--bg2); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.meme-card { cursor: pointer; }
-.meme-card img { width: 100%; height: 100%; object-fit: cover; padding: 0; border-radius: 8px; transition: transform 0.3s ease; }
-.meme-card:hover img { transform: scale(1.04); }
-.meme-empty { font-size: 2.5rem; opacity: 0.1; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
-/* MOAI PEEK ANIMATIONS */
-.moai-peek {
-  position: fixed;
-  z-index: 50;
-  pointer-events: none;
-  width: 110px;
-  opacity: 0;
+/* MEMES */
+.meme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.meme-card {
+  aspect-ratio: 1; border: 1px solid var(--border); border-radius: 8px;
+  background: rgba(7,5,15,0.6); overflow: hidden; transition: border-color 0.2s, transform 0.2s;
 }
-
-/* Why Rise: peek from bottom-left */
-.moai-peek-bottom {
-  bottom: -220px;
-  left: 48px;
-  transition: none;
-  animation: none;
-}
-
-/* Tokenomics: peek from top-right */
-.moai-peek-top {
-  top: -120px;
-  right: 48px;
-  transform: rotate(180deg);
-  animation: none;
-}
-
-@keyframes peekFromBottom {
-  0%   { opacity: 0;  transform: translateY(0); }
-  8%   { opacity: 1;  transform: translateY(0); }
-  25%  { opacity: 1;  transform: translateY(-148px); }
-  60%  { opacity: 1;  transform: translateY(-148px); }
-  82%  { opacity: 1;  transform: translateY(0); }
-  83%  { opacity: 1;  transform: translateY(0); }
-  100% { opacity: 0;  transform: translateY(0); }
-}
-
-@keyframes peekFromTop {
-  0%   { opacity: 0; transform: rotate(180deg) translateY(0); }
-  8%   { opacity: 1; }
-  25%  { opacity: 1; transform: rotate(180deg) translateY(-72px); }
-  60%  { opacity: 1; transform: rotate(180deg) translateY(-72px); }
-  80%  { opacity: 1; transform: rotate(180deg) translateY(0); }
-  90%  { opacity: 0; transform: rotate(180deg) translateY(0); }
-  100% { opacity: 0; transform: rotate(180deg) translateY(0); }
-}
-
-.moai-peek-bottom.active {
-  animation: peekFromBottom 9s ease-in-out forwards;
-}
-
-.moai-peek-top.active {
-  animation: peekFromTop 9s ease-in-out forwards;
-}
-
-
-/* LANG DROPDOWN */
-.lang-dropdown {
-  position: relative;
-  margin-right: 1.5rem;
-}
-
-.lang-trigger {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  color: var(--purple);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  padding: 0.35rem 0.65rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.lang-trigger:hover { border-color: var(--purple); color: var(--accent); }
-.lang-trigger::after { content: '▾'; font-size: 9px; opacity: 0.6; }
-
-.lang-menu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 2px);
-  right: 0;
-  background: rgba(13,8,24,0.97);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-  min-width: 120px;
-  backdrop-filter: blur(12px);
-  z-index: 200;
-}
-
-.lang-menu.open { display: block; }
-
-.lang-option {
-  display: block;
-  width: 100%;
-  background: none;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  color: var(--muted);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  padding: 0.55rem 0.9rem;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.15s;
-}
-.lang-option:last-child { border-bottom: none; }
-.lang-option:hover { color: var(--accent); background: rgba(180,160,220,0.06); }
-.lang-option.active { color: var(--accent); }
-
+.meme-card:hover { border-color: var(--amber); transform: scale(1.02); }
+.meme-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.meme-card:hover img { transform: scale(1.06); }
 
 /* FILMS */
+.film-featured {
+  position: relative; width: 100%; border-radius: 12px; overflow: hidden;
+  margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(7,5,15,0.5); backdrop-filter: blur(8px);
+}
+.film-featured-thumb {
+  width: 100%; height: 400px; object-fit: cover; display: block;
+  filter: brightness(0.7); transition: filter 0.3s;
+}
+.film-featured:hover .film-featured-thumb { filter: brightness(0.85); }
+.film-featured-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,5,15,0.97) 0%, rgba(7,5,15,0.5) 45%, rgba(7,5,15,0.05) 100%);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem;
+}
+.film-featured-badge {
+  display: inline-block; font-size: 9px; letter-spacing: 0.3em;
+  color: var(--amber); border: 1px solid rgba(200,169,110,0.35);
+  border-radius: 4px; padding: 3px 10px; margin-bottom: 0.75rem; width: fit-content;
+  background: rgba(200,169,110,0.08);
+}
+.film-featured-ep { font-size: 10px; letter-spacing: 0.25em; color: rgba(255,255,255,0.35); margin-bottom: 0.35rem; }
+.film-featured-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; letter-spacing: 0.05em;
+  color: white; margin-bottom: 0.6rem; line-height: 1.1;
+}
+.film-featured-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 480px; margin-bottom: 1.25rem; }
+.film-featured-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em;
+  color: var(--accent); text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 0.65rem 1.5rem;
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(8px);
+  transition: all 0.2s; width: fit-content;
+}
+.film-featured-btn:hover { border-color: var(--amber); background: rgba(200,169,110,0.1); color: var(--amber); }
+.film-featured-play-icon {
+  width: 56px; height: 56px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
+  border: 1.5px solid rgba(255,255,255,0.5); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; padding-left: 3px; color: white;
+  background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); transition: all 0.2s;
+}
+.film-featured:hover .film-featured-play-icon { border-color: var(--amber); color: var(--amber); transform: translate(-50%, -60%) scale(1.1); }
 .films-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  margin-top: 1rem;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
-  overflow: hidden;
+  display: flex; flex-direction: column; gap: 1px;
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden;
 }
-
 .film-card {
-  display: flex;
-  background: rgba(10,8,20,0.6);
-  backdrop-filter: blur(8px);
-  transition: background 0.2s;
-  min-height: 140px;
+  display: flex; background: rgba(7,5,15,0.65); backdrop-filter: blur(8px);
+  transition: background 0.2s; min-height: 120px;
 }
-.film-card + .film-card { border-top: 1px solid rgba(255,255,255,0.08); }
-.film-card:hover { background: rgba(255,255,255,0.04); }
-
+.film-card + .film-card { border-top: 1px solid rgba(255,255,255,0.07); }
+.film-card:hover { background: rgba(200,169,110,0.04); }
 .film-thumb-link {
-  width: 240px;
-  min-width: 240px;
-  height: 140px;
-  position: relative;
-  overflow: hidden;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  display: block;
-  text-decoration: none;
+  width: 200px; min-width: 200px; height: 120px;
+  position: relative; overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.07); display: block; text-decoration: none;
 }
-
-.film-thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: opacity 0.2s, transform 0.3s;
-}
-
-.film-thumb-link:hover .film-thumb-img {
-  opacity: 0.9;
-  transform: scale(1.03);
-}
-
-.film-play-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+.film-thumb-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s, opacity 0.2s; }
+.film-thumb-link:hover .film-thumb-img { transform: scale(1.05); opacity: 0.85; }
+.film-play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .film-play-btn {
-  width: 48px;
-  height: 48px;
-  border: 1.5px solid rgba(255,255,255,0.6);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: white;
-  padding-left: 3px;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(4px);
-  transition: all 0.2s;
+  width: 40px; height: 40px; border: 1.5px solid rgba(255,255,255,0.5); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; padding-left: 2px; color: white;
+  background: rgba(0,0,0,0.35); backdrop-filter: blur(4px); transition: all 0.2s;
 }
-
-.film-thumb-link:hover .film-play-btn {
-  background: rgba(0,0,0,0.6);
-  border-color: white;
-  transform: scale(1.08);
-}
-
+.film-thumb-link:hover .film-play-btn { border-color: var(--amber); color: var(--amber); transform: scale(1.1); }
 .film-soon-badge {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.4);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 4px;
-  padding: 3px 8px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px; padding: 3px 8px;
 }
-
-.film-info {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.4rem;
-  flex: 1;
-}
-
-.film-ep {
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  color: rgba(255,255,255,0.35);
-}
-
-.film-title {
-  font-size: 16px;
-  font-weight: 400;
-  color: white;
-  letter-spacing: 0.05em;
-}
-
-.film-desc {
-  font-size: 12px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.45);
-  max-width: 480px;
-}
-
+.film-info { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; justify-content: center; gap: 0.35rem; flex: 1; }
+.film-ep { font-size: 9px; letter-spacing: 0.25em; color: rgba(200,169,110,0.5); }
+.film-title { font-size: 14px; font-weight: 400; color: white; letter-spacing: 0.05em; }
+.film-desc { font-size: 11px; line-height: 1.7; color: rgba(255,255,255,0.4); max-width: 480px; }
 .films-watch-btn {
-  display: inline-block;
-  margin-top: 0.5rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 5px;
-  padding: 0.4rem 0.9rem;
-  transition: all 0.2s;
-  width: fit-content;
+  display: inline-block; margin-top: 0.4rem;
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;
+  padding: 0.3rem 0.7rem; transition: all 0.2s; width: fit-content;
 }
-.films-watch-btn:hover {
-  border-color: rgba(255,255,255,0.5);
-  color: white;
-  background: rgba(255,255,255,0.06);
-}
-
-  /* LIGHTBOX */
-  .lightbox img {
-    max-width: 96vw;
-    max-height: 85vh;
-  }
-
-  /* LANG MENU */
-  .lang-menu {
-    right: 0;
-    left: auto;
-    min-width: 140px;
-  }
-
-  /* MOUNTAIN */
-  .bg-mountain { opacity: 0.25; }
-
-  /* PEEK */
-  .moai-peek { width: 80px; }
-}
-
-@media (max-width: 400px) {
-  .hero-ticker { font-size: 2.5rem; }
-  .ca-text { font-size: 9px; }
-  .meme-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
-}
-
-
-.films-watch-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 6px;
-  padding: 0.65rem 1.5rem;
-  transition: all 0.2s;
-  backdrop-filter: blur(8px);
-  background: rgba(255,255,255,0.05);
-}
-.films-watch-btn:hover {
-  border-color: rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
-
+.films-watch-btn:hover { border-color: var(--amber); color: var(--amber); }
 
 /* LIGHTBOX */
 .lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(0,0,0,0);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
+  display: none; position: fixed; inset: 0; z-index: 999;
+  align-items: center; justify-content: center; cursor: pointer;
 }
-.lightbox.open {
-  display: flex;
-  animation: lbFadeIn 0.3s ease forwards;
-}
-.lightbox.closing {
-  animation: lbFadeOut 0.25s ease forwards;
-}
-@keyframes lbFadeIn {
-  from { background: rgba(0,0,0,0); backdrop-filter: blur(0px); }
-  to   { background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); }
-}
-@keyframes lbFadeOut {
-  from { background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); }
-  to   { background: rgba(0,0,0,0); backdrop-filter: blur(0px); }
-}
+.lightbox.open { display: flex; animation: lbFadeIn 0.3s ease forwards; }
+.lightbox.closing { animation: lbFadeOut 0.25s ease forwards; }
+@keyframes lbFadeIn { from { background: rgba(0,0,0,0); backdrop-filter: blur(0px); } to { background: rgba(0,0,0,0.92); backdrop-filter: blur(20px); } }
+@keyframes lbFadeOut { from { background: rgba(0,0,0,0.92); backdrop-filter: blur(20px); } to { background: rgba(0,0,0,0); backdrop-filter: blur(0px); } }
 .lightbox img {
-  max-width: 92vw;
-  max-height: 92vh;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 0 60px rgba(0,0,0,0.6);
-  cursor: default;
-  opacity: 0;
-  transform: scale(0.94);
+  max-width: 92vw; max-height: 92vh; object-fit: contain; border-radius: 10px;
+  cursor: default; opacity: 0; transform: scale(0.94);
   transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
 }
-.lightbox.open img {
-  opacity: 1;
-  transform: scale(1);
-}
+.lightbox.open img { opacity: 1; transform: scale(1); }
 .lightbox-close {
-  position: fixed;
-  top: 1.25rem;
-  right: 1.5rem;
-  color: rgba(255,255,255,0);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  cursor: pointer;
-  z-index: 1000;
-  transition: color 0.3s ease 0.15s;
+  position: fixed; top: 1.25rem; right: 1.5rem; color: rgba(255,255,255,0);
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em;
+  cursor: pointer; z-index: 1000; transition: color 0.3s ease 0.15s;
 }
-.lightbox.open .lightbox-close { color: rgba(255,255,255,0.5); }
+.lightbox.open .lightbox-close { color: rgba(255,255,255,0.4); }
 .lightbox-close:hover { color: white !important; }
-.meme-card { cursor: pointer; }
 
-
-/* LOAD MORE */
-.meme-hidden { display: none; }
-
-.load-more-btn {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.6);
-  background: none;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 6px;
-  padding: 0.6rem 1.5rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  backdrop-filter: blur(8px);
+/* LANG */
+.lang-dropdown { position: relative; }
+.lang-trigger {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: none; border: 1px solid var(--border); border-radius: 5px;
+  color: var(--muted); font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; padding: 0.35rem 0.65rem; transition: all 0.2s;
 }
-.load-more-btn:hover {
-  border-color: rgba(255,255,255,0.4);
-  color: white;
-  background: rgba(255,255,255,0.06);
+.lang-trigger:hover { border-color: var(--amber); color: var(--accent); }
+.lang-trigger::after { content: '▾'; font-size: 9px; opacity: 0.6; }
+.lang-menu {
+  display: none; position: absolute; top: calc(100% + 4px); right: 0;
+  background: rgba(7,5,15,0.98); border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden; min-width: 130px; backdrop-filter: blur(20px); z-index: 300;
 }
-.load-more-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
+.lang-menu.open { display: block; }
+.lang-option {
+  display: block; width: 100%; background: none; border: none;
+  border-bottom: 1px solid var(--border); color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+  padding: 0.55rem 0.9rem; text-align: left; transition: all 0.15s;
 }
+.lang-option:last-child { border-bottom: none; }
+.lang-option:hover { color: var(--accent); background: rgba(200,169,110,0.06); }
+.lang-option.active { color: var(--amber); }
 
+/* MOAI PEEK */
+.moai-peek { position: fixed; z-index: 50; pointer-events: none; width: 110px; opacity: 0; }
+.moai-peek-bottom { bottom: -220px; left: 48px; }
+.moai-peek-top { top: -120px; right: 48px; transform: rotate(180deg); }
+@keyframes peekFromBottom { 0%{opacity:0;transform:translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:translateY(-148px)} 60%{opacity:1;transform:translateY(-148px)} 82%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(0)} }
+@keyframes peekFromTop { 0%{opacity:0;transform:rotate(180deg) translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:rotate(180deg) translateY(-72px)} 60%{opacity:1;transform:rotate(180deg) translateY(-72px)} 80%{opacity:1;transform:rotate(180deg) translateY(0)} 100%{opacity:0;transform:rotate(180deg) translateY(0)} }
+.moai-peek-bottom.active { animation: peekFromBottom 9s ease-in-out forwards; }
+.moai-peek-top.active { animation: peekFromTop 9s ease-in-out forwards; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) {
+  nav { padding: 0 1rem; }
+  .tab { padding: 0 0.65rem; font-size: 10px; }
+  .hero-stoic { height: 55%; opacity: 0.45; }
+  .hero-title { font-size: 3.5rem; }
+  .film-featured-thumb { height: 240px; }
+  .film-thumb-link { width: 120px; min-width: 120px; height: 90px; }
+  .film-card { min-height: 90px; }
+  .film-desc { display: none; }
+  .meme-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  .inner, .inner-wide { padding: 3rem 1.25rem 4rem; }
+}
+@media (max-width: 400px) { .hero-title { font-size: 2.8rem; } .ca-text { font-size: 9px; } }
 </style>
 </head>
 <body>
 <style>:root { --cs-text: "COMING SOON"; }</style>
-<div class="bg-sunset"></div>
-<div class="bg-stars"></div>
-<div class="bg-moon"></div>
-<div class="bg-clouds">
-  <div class="cloud cloud-1"></div>
-  <div class="cloud cloud-2"></div>
-  <div class="cloud cloud-3"></div>
-  <div class="cloud cloud-4"></div>
-  <div class="cloud cloud-5"></div>
-  <div class="cloud cloud-6"></div>
-  <div class="cloud cloud-7"></div>
-</div>
-<div class="bg-overlay"></div>
-<div class="bg-grain"></div>
-<svg class="bg-mountain" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-  <path d="M0,320 L0,220 L80,200 L160,180 L260,120 L340,150 L440,70 L520,100 L600,40 L680,80 L760,30 L840,70 L940,50 L1040,100 L1140,60 L1240,130 L1340,110 L1440,150 L1440,320 Z" fill="#1a0e38"></path>
-  <path d="M0,320 L0,260 L100,240 L200,250 L300,180 L380,210 L480,140 L560,170 L640,110 L720,150 L800,120 L880,160 L980,140 L1080,190 L1180,160 L1280,210 L1380,190 L1440,220 L1440,320 Z" fill="#120a28"></path>
-</svg>
 
+<canvas id="rain-canvas"></canvas>
+<div class="bg-grain"></div>
 
 <img class="moai-peek moai-peek-bottom" id="peek-rise" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/peek_backpack_zbopyc.png" alt="">
 <img class="moai-peek moai-peek-top" id="peek-tokenomics" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/peek_hula_j3yfvy.png" alt="">
 
 <nav>
-  <span class="nav-logo" onclick="showTab(&#39;home&#39;)">🗿 $STOIC</span>
+  <span class="nav-logo" onclick="showTab('home')">🗿 $STOIC</span>
   <div class="nav-tabs">
-    <button class="tab active" data-tab="home" onclick="showTab(&#39;home&#39;)" data-i18n="tab_home">HOME</button>
-    <button class="tab" data-tab="rise" onclick="showTab(&#39;rise&#39;)" data-i18n="tab_rise">WHY RISE</button>
-    <button class="tab" data-tab="tokenomics" onclick="showTab(&#39;tokenomics&#39;)" data-i18n="tab_tok">TOKENOMICS</button>
-    <button class="tab" data-tab="memes" onclick="showTab(&#39;memes&#39;)" data-i18n="tab_memes">MEMES</button>
-    <button class="tab" data-tab="films" onclick="showTab(&#39;films&#39;)" data-i18n="tab_films">FILMS</button>
+    <button class="tab active" data-tab="home" onclick="showTab('home')" data-i18n="tab_home">HOME</button>
+    <button class="tab" data-tab="films" onclick="showTab('films')" data-i18n="tab_films">FILMS</button>
+    <button class="tab" data-tab="rise" onclick="showTab('rise')" data-i18n="tab_rise">WHY RISE</button>
+    <button class="tab" data-tab="tokenomics" onclick="showTab('tokenomics')" data-i18n="tab_tok">TOKENOMICS</button>
+    <button class="tab" data-tab="memes" onclick="showTab('memes')" data-i18n="tab_memes">MEMES</button>
   </div>
-  <div style="display:flex;align-items:center">
+  <div class="nav-right">
     <div class="lang-dropdown">
       <button class="lang-trigger" id="lang-trigger">EN</button>
       <div class="lang-menu">
-        <button class="lang-option active" data-lang="en" onclick="setLang(&#39;en&#39;,&#39;EN&#39;)">EN — English</button>
-        <button class="lang-option" data-lang="zh" onclick="setLang(&#39;zh&#39;,&#39;中文&#39;)">中文 — Chinese</button>
-        <button class="lang-option" data-lang="ja" onclick="setLang(&#39;ja&#39;,&#39;日本語&#39;)">日本語 — Japanese</button>
-        <button class="lang-option" data-lang="ko" onclick="setLang(&#39;ko&#39;,&#39;한국어&#39;)">한국어 — Korean</button>
-        <button class="lang-option" data-lang="bahasa" onclick="setLang(&#39;bahasa&#39;,&#39;BAHASA&#39;)">BAHASA — Indonesia</button>
+        <button class="lang-option active" data-lang="en" onclick="setLang('en','EN')">EN — English</button>
+        <button class="lang-option" data-lang="zh" onclick="setLang('zh','中文')">中文 — Chinese</button>
+        <button class="lang-option" data-lang="ja" onclick="setLang('ja','日本語')">日本語 — Japanese</button>
+        <button class="lang-option" data-lang="ko" onclick="setLang('ko','한국어')">한국어 — Korean</button>
+        <button class="lang-option" data-lang="bahasa" onclick="setLang('bahasa','BAHASA')">BAHASA — Indonesia</button>
       </div>
     </div>
-    <a class="nav-buy" href="https://rise.rich/trade/9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise" target="_blank" style="opacity:1;cursor:pointer;color:var(--accent);text-decoration:none;font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:11px;letter-spacing:0.15em;">BUY →</a>
+    <a class="nav-buy" href="https://rise.rich/trade/9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise" target="_blank">BUY →</a>
   </div>
 </nav>
 
+<!-- HOME -->
 <div class="page active" id="home">
-  <div class="parade-outer">
-    <div class="parade-inner" id="parade-inner"><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif" alt=""></div>
-    <div class="ground-line"></div>
-  </div>
-  <div class="hero-ticker">$STOIC</div>
-  <p class="hero-tag" data-i18n="tagline">THE MARKET PANICS. STOIC DOESN'T.</p>
-  <div class="ca-wrap">
-    <span class="ca-label" data-i18n="ca_label">CONTRACT ADDRESS</span>
-    <div class="ca-row">
-      <span class="ca-text" id="ca">9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise</span>
-      <button class="ca-copy" id="copy-btn" onclick="copyCA()">COPY</button>
+  <div class="hero-wrap">
+    <div class="hero-bg"></div>
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-bg-bottom"></div>
+    <img class="hero-stoic" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779175504/hero_stoic_r2a7x2.png" alt="STOIC">
+    <div class="hero-ambient"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">STONE TOKEN OF IMMOVABLE CONVICTION</div>
+      <div class="hero-title">$STOIC</div>
+      <div class="hero-tagline" data-i18n="tagline">THE MARKET PANICS. STOIC DOESN'T.</div>
+      <div class="hero-ca">
+        <span class="ca-label" data-i18n="ca_label">CONTRACT ADDRESS</span>
+        <div class="ca-row">
+          <span class="ca-text" id="ca">9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise</span>
+          <button class="ca-copy" id="copy-btn" onclick="copyCA()">COPY</button>
+        </div>
+      </div>
+      <div class="hero-links">
+        <a class="lnk on" href="https://x.com/stoiconrise" target="_blank">TWITTER</a>
+        <span class="dot">·</span>
+        <a class="lnk on" href="https://t.me/StoiconrisePortal" target="_blank">TELEGRAM</a>
+        <span class="dot">·</span>
+        <a class="lnk on" href="https://www.tiktok.com/@stoiconrise" target="_blank">TIKTOK</a>
+        <span class="dot">·</span>
+        <a class="lnk on" href="https://www.instagram.com/stoiconrise/" target="_blank">INSTAGRAM</a>
+        <span class="dot">·</span>
+        <a class="lnk on" href="https://rise.rich/trade/9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise" target="_blank">RISE.RICH</a>
+      </div>
     </div>
   </div>
-  <div class="links-row">
-    <a class="lnk on" href="https://x.com/stoiconrise" target="_blank">TWITTER</a>
-    <span class="dot">·</span>
-    <a class="lnk on" href="https://t.me/StoiconrisePortal" target="_blank">TELEGRAM</a>
-    <span class="dot">·</span>
-    <a class="lnk on" href="https://www.tiktok.com/@stoiconrise" target="_blank">TIKTOK</a>
-    <span class="dot">·</span>
-    <a class="lnk on" href="https://www.instagram.com/stoiconrise/" target="_blank">INSTAGRAM</a>
-    <span class="dot">·</span>
-    <a class="lnk on" href="https://rise.rich/trade/9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise" target="_blank">RISE.RICH</a>
+
+  <div class="footer-section">
+    <img class="footer-vending" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779175504/footer_vending_flt8sk.png" alt="">
+    <div class="footer-content">
+      <div class="footer-logo">🗿 $STOIC — RISE.RICH</div>
+      <div class="footer-tagline">unfazed. unbroken. unmatched.</div>
+      <div class="footer-links">
+        <a class="footer-link" href="https://x.com/stoiconrise" target="_blank">TWITTER</a>
+        <a class="footer-link" href="https://t.me/StoiconrisePortal" target="_blank">TELEGRAM</a>
+        <a class="footer-link" href="https://www.instagram.com/stoiconrise/" target="_blank">INSTAGRAM</a>
+        <a class="footer-link" href="https://www.tiktok.com/@stoiconrise" target="_blank">TIKTOK</a>
+        <a class="footer-link" href="https://rise.rich/trade/9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise" target="_blank">BUY $STOIC</a>
+      </div>
+      <div class="footer-copy">stoiconrise.xyz · 9ykEeahxnyWNhjvykQverQynsU9gg8sTT5a85vcarise</div>
+    </div>
   </div>
 </div>
 
+<!-- WHY RISE -->
 <div class="page" id="rise">
-  <div class="inner">
+  <div class="section-bg" style="background-image:url('https://res.cloudinary.com/dqgkxarez/image/upload/v1779175504/bg_why_rise_h5rtmt.png');"></div>
+  <div class="section-bg-overlay"></div>
+  <div class="inner" style="position:relative;z-index:2;">
     <p class="page-label" data-i18n="rise_title">WHY RISE.RICH</p>
     <div class="row"><div class="row-title" data-i18n="rise_1_title">Your bags can't go to zero.</div><p class="row-text" data-i18n="rise_1_text">Every token on rise.rich has a floor price that only ever goes up — enforced by protocol-owned liquidity, not promises. The floor tracks ~50% of all-time high. Even in a full selloff, the last seller still gets paid.</p></div>
     <div class="row"><div class="row-title" data-i18n="rise_2_title">Borrow without interest. No liquidation.</div><p class="row-text" data-i18n="rise_2_text">Hold $STOIC and borrow against your floor value from day one. One flat fee. Zero ongoing interest. No liquidation engine — the floor is mathematically guaranteed, so there's nothing to liquidate.</p></div>
@@ -852,8 +481,9 @@ nav {
   </div>
 </div>
 
+<!-- TOKENOMICS -->
 <div class="page" id="tokenomics">
-  <div class="inner">
+  <div class="inner" style="position:relative;z-index:2;">
     <p class="page-label" data-i18n="tok_title">TOKENOMICS</p>
     <div class="row"><div class="row-title" data-i18n="tok_1_title">Fair launch.</div><p class="row-text" data-i18n="tok_1_text">No presale. No team allocation. No insider bags. $STOIC launches permissionlessly on rise.rich — everyone enters through the same bonding curve.</p><div class="pills"><span class="pill">FAIR LAUNCH</span><span class="pill">NO PRESALE</span><span class="pill">NO TEAM ALLOC</span></div></div>
     <div class="row"><div class="row-title" data-i18n="tok_2_title">Elastic supply.</div><p class="row-text" data-i18n="tok_2_text">Every buy mints a fresh token at the current price. Every sell burns it forever. The protocol holds all liquidity — no fragmentation, no external risk.</p></div>
@@ -862,8 +492,11 @@ nav {
   </div>
 </div>
 
+<!-- MEMES -->
 <div class="page" id="memes">
-  <div class="inner" style="max-width:860px">
+  <div class="section-bg" style="background-image:url('https://res.cloudinary.com/dqgkxarez/image/upload/v1779175504/bg_memes_t2io6p.png');background-position:center top;"></div>
+  <div class="section-bg-overlay"></div>
+  <div class="inner-wide" style="position:relative;z-index:2;">
     <p class="page-label" data-i18n="memes_title">MEMES</p>
     <div class="meme-grid">
       <div class="meme-card"><img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779080463/beatles_xehzxl.png" alt="Beatles"></div>
@@ -877,497 +510,310 @@ nav {
   </div>
 </div>
 
-<script>
-const GIF = 'https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/parade_tnzogk.gif';
-const MOAI = 'https://res.cloudinary.com/dqgkxarez/image/upload/v1779044898/moai_logo_xgpqpw.jpg';
-
-// Build parade
-const inner = document.getElementById('parade-inner');
-for (let i = 0; i < 8; i++) {
-  const img = document.createElement('img');
-  img.src = GIF;
-  img.alt = '';
-  inner.appendChild(img);
-}
-
-// Inject moai to memes
-const mi = document.createElement('img');
-mi.src = MOAI; mi.alt = 'STOIC';
-// memes loaded via HTML
-
-
-// Lightbox
-function openLightbox(src) {
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('open');
-}
-
-// Attach lightbox via event delegation on meme grid
-document.addEventListener('click', function(e) {
-  const img = e.target.closest('.meme-card img');
-  if (img) {
-    e.stopPropagation();
-    openLightbox(img.src);
-  }
-});
-
-function closeLightbox() {
-  const lb = document.getElementById('lightbox');
-  lb.classList.add('closing');
-  lb.classList.remove('open');
-  setTimeout(() => {
-    lb.classList.remove('closing');
-    lb.style.display = 'none';
-    document.getElementById('lightbox-img').src = '';
-    lb.style.display = '';
-  }, 260);
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLightbox();
-});
-
-// Attach click to all meme cards
-document.querySelectorAll('.meme-card img').forEach(img => {
-  img.style.cursor = 'pointer';
-  img.addEventListener('click', (e) => {
-    e.stopPropagation();
-    openLightbox(img.src);
-  });
-});
-
-function showTab(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelector('[data-tab="' + id + '"]').classList.add('active');
-  // Update URL without reload
-  const slug = id === 'home' ? '/' : '/' + id;
-  window.history.pushState({ tab: id }, '', slug);
-
-  const peekRise = document.getElementById('peek-rise');
-  const peekTok  = document.getElementById('peek-tokenomics');
-  peekRise.classList.remove('active');
-  peekTok.classList.remove('active');
-
-  if (id === 'rise') {
-    void peekRise.offsetWidth;
-    peekRise.classList.add('active');
-  } else if (id === 'tokenomics') {
-    void peekTok.offsetWidth;
-    peekTok.classList.add('active');
-  }
-}
-
-function copyCA() {
-  const txt = document.getElementById('ca').textContent;
-  const btn = document.getElementById('copy-btn');
-  const t = translations[currentLang] || translations['en'];
-  navigator.clipboard.writeText(txt).then(() => {
-    btn.textContent = t.copy_done;
-    setTimeout(() => btn.textContent = t.copy, 1500);
-  });
-}
-
-// ---- TRANSLATIONS ----
-const translations = {
-  en: {
-    tagline: "THE MARKET PANICS. STOIC DOESN'T.",
-    ca_label: "CONTRACT ADDRESS",
-    tab_home: "HOME", tab_rise: "WHY RISE", tab_tok: "TOKENOMICS", tab_memes: "MEMES", tab_films: "FILMS", tab_films: "FILMS", films_title: "FILMS",
-    copy: "COPY", copy_done: "COPIED", coming_soon: "COMING SOON",
-    rise_title: "WHY RISE.RICH",
-    rise_1_title: "Your bags can't go to zero.",
-    rise_1_text: "Every token on rise.rich has a floor price that only ever goes up — enforced by protocol-owned liquidity, not promises. The floor tracks ~50% of all-time high. Even in a full selloff, the last seller still gets paid.",
-    rise_2_title: "Borrow without interest. No liquidation.",
-    rise_2_text: "Hold $STOIC and borrow against your floor value from day one. One flat fee. Zero ongoing interest. No liquidation engine — the floor is mathematically guaranteed, so there's nothing to liquidate.",
-    rise_3_title: "Loop it.",
-    rise_3_text: "Deposit → borrow → buy more → repeat. Amplify your exposure without risking forced unwinds. The floor holds no matter what.",
-    rise_4_title: "The floor rises when others dump.",
-    rise_4_text: "A portion of every trading fee flows directly back into the floor. So even during selloffs, the floor keeps climbing. Counterintuitive — but that's the mechanism.",
-    rise_5_title: "Protocol-owned liquidity.",
-    rise_5_text: "No external LPs that can disappear. No market makers that ghost when you need them. The protocol is the sole counterparty — always there, always solvent.",
-    tok_title: "TOKENOMICS",
-    tok_1_title: "Fair launch.",
-    tok_1_text: "No presale. No team allocation. No insider bags. $STOIC launches permissionlessly on rise.rich — everyone enters through the same bonding curve.",
-    tok_2_title: "Elastic supply.",
-    tok_2_text: "Every buy mints a fresh token at the current price. Every sell burns it forever. The protocol holds all liquidity — no fragmentation, no external risk.",
-    tok_3_title: "Floor mechanics.",
-    tok_3_text: "As $STOIC appreciates, the protocol reallocates liquidity into the floor — permanently raising it in lockstep with price. Immutable and covered by smart contracts audited by Sherlock.",
-    tok_4_title: "Fees.",
-    tok_4_text: "Platform trading fees partially flow back into the floor. Borrow origination: one-time 3% flat fee. No ongoing interest. No surprise costs.",
-    memes_title: "MEMES",
-  },
-  zh: {
-    tagline: "市场恐慌，STOIC 不动如山。",
-    ca_label: "合约地址",
-    tab_home: "首页", tab_rise: "为何选择 RISE", tab_tok: "代币经济", tab_memes: "表情包", tab_films: "影片", tab_films: "影片", films_title: "影片",
-    copy: "复制", copy_done: "已复制", coming_soon: "即将推出",
-    rise_title: "为何选择 RISE.RICH",
-    rise_1_title: "你的仓位不会归零。",
-    rise_1_text: "rise.rich 上的每个代币都有一个只升不降的底价，由协议自有流动性强制执行。底价锁定在历史最高价的约50%。即使全盘抛售，最后一个卖家仍能收到款项。",
-    rise_2_title: "零利率借款，无强制平仓。",
-    rise_2_text: "持有 $STOIC 即可从第一天起以底价价值借款。一次性费用，零持续利息，无清算机制——底价有数学保障，根本无需清算。",
-    rise_3_title: "循环操作。",
-    rise_3_text: "存入 → 借款 → 买入更多 → 重复。在不承担强制平仓风险的情况下放大敞口，底价始终坚守。",
-    rise_4_title: "别人抛售时，底价反而上涨。",
-    rise_4_text: "每笔交易手续费的一部分直接回流至底价。因此即使在抛售期间，底价也持续攀升。反直觉，但这就是机制。",
-    rise_5_title: "协议自有流动性。",
-    rise_5_text: "没有可能消失的外部 LP，没有关键时刻失联的做市商。协议是唯一对手方——永远在场，永远偿付。",
-    tok_title: "代币经济",
-    tok_1_title: "公平启动。",
-    tok_1_text: "无预售，无团队分配，无内部筹码。$STOIC 在 rise.rich 上无需许可地启动，所有人通过相同的联合曲线进入。",
-    tok_2_title: "弹性供应。",
-    tok_2_text: "每次买入以当前价格铸造新代币，每次卖出永久销毁。协议持有全部流动性，无碎片化，无外部风险。",
-    tok_3_title: "底价机制。",
-    tok_3_text: "随着 $STOIC 升值，协议将流动性重新分配至底价，与价格同步永久拉升。由经 Sherlock 审计的智能合约保障。",
-    tok_4_title: "手续费。",
-    tok_4_text: "平台交易费部分回流至底价。借款起始费：一次性 3% 固定费用，无持续利息，无隐藏成本。",
-    memes_title: "表情包",
-  },
-  ja: {
-    tagline: "市場はパニック。STOIC は動じない。",
-    ca_label: "コントラクトアドレス",
-    tab_home: "ホーム", tab_rise: "なぜ RISE？", tab_tok: "トークノミクス", tab_memes: "ミーム", tab_films: "フィルム", tab_films: "フィルム", films_title: "フィルム",
-    copy: "コピー", copy_done: "コピー済", coming_soon: "近日公開",
-    rise_title: "なぜ RISE.RICH なのか",
-    rise_1_title: "資産がゼロになることはない。",
-    rise_1_text: "rise.rich 上のすべてのトークンは下限価格を持ち、それは上昇するのみです。下限はATHの約50%に設定され、全売却時でも最後の売り手は代金を受け取れます。",
-    rise_2_title: "無利子借入。清算なし。",
-    rise_2_text: "$STOIC を保有するだけで初日から借入可能。一回限りの手数料、継続利息ゼロ、清算エンジンなし。",
-    rise_3_title: "ループする。",
-    rise_3_text: "預入 → 借入 → 追加購入 → 繰り返し。強制決済リスクなしにエクスポージャーを拡大。",
-    rise_4_title: "他者が売却するとき、下限は上昇する。",
-    rise_4_text: "取引手数料の一部が直接下限に還流します。売却時でも下限は上昇し続けます。",
-    rise_5_title: "プロトコル所有の流動性。",
-    rise_5_text: "消えてしまう外部LPはありません。プロトコルが唯一の相手方として常に存在します。",
-    tok_title: "トークノミクス",
-    tok_1_title: "フェアローンチ。",
-    tok_1_text: "プレセールなし、チーム配分なし。$STOIC はrise.richでパーミッションレスに起動し、全員が同じボンディングカーブで参入します。",
-    tok_2_title: "弾力的な供給。",
-    tok_2_text: "購入ごとに現在価格で新トークンをミント、売却ごとに永久バーン。",
-    tok_3_title: "下限メカニズム。",
-    tok_3_text: "$STOIC の価値上昇に伴い、プロトコルは流動性を下限に再配分します。Sherlock 監査済み。",
-    tok_4_title: "手数料。",
-    tok_4_text: "プラットフォーム取引手数料の一部が下限に還流。借入起算手数料：一回限り3%。",
-    memes_title: "ミーム",
-  },
-  ko: {
-    tagline: "시장은 패닉. STOIC은 흔들리지 않는다.",
-    ca_label: "컨트랙트 주소",
-    tab_home: "홈", tab_rise: "RISE를 선택하는 이유", tab_tok: "토크노믹스", tab_memes: "밈", tab_films: "필름", tab_films: "필름", films_title: "필름",
-    copy: "복사", copy_done: "복사됨", coming_soon: "곧 출시",
-    rise_title: "왜 RISE.RICH인가",
-    rise_1_title: "자산이 0이 될 수 없습니다.",
-    rise_1_text: "rise.rich의 모든 토큰은 하한가를 가지며, 이는 오직 상승만 합니다. 하한가는 ATH의 약 50%로 설정되며, 전량 매도 시에도 마지막 매도자는 대금을 받습니다.",
-    rise_2_title: "무이자 대출. 청산 없음.",
-    rise_2_text: "$STOIC 보유 시 첫날부터 하한가 기준으로 대출 가능. 일회성 수수료, 지속 이자 없음, 청산 없음.",
-    rise_3_title: "루프하세요.",
-    rise_3_text: "예치 → 대출 → 추가 매수 → 반복. 강제 청산 없이 익스포저를 확대하세요.",
-    rise_4_title: "남들이 팔 때 하한가가 오릅니다.",
-    rise_4_text: "거래 수수료의 일부가 하한가로 환류됩니다. 매도세 속에서도 하한가는 계속 오릅니다.",
-    rise_5_title: "프로토콜 소유 유동성.",
-    rise_5_text: "사라질 수 있는 외부 LP가 없습니다. 프로토콜이 유일한 거래 상대방으로 항상 존재합니다.",
-    tok_title: "토크노믹스",
-    tok_1_title: "페어 런치.",
-    tok_1_text: "프리세일 없음, 팀 물량 없음. $STOIC은 rise.rich에서 무허가로 출시되며 모든 참여자가 동일한 본딩 커브로 진입합니다.",
-    tok_2_title: "탄력적 공급.",
-    tok_2_text: "매수 시 현재 가격으로 새 토큰 발행, 매도 시 영구 소각.",
-    tok_3_title: "하한가 메커니즘.",
-    tok_3_text: "$STOIC 가치 상승 시 프로토콜이 유동성을 하한가로 재배분합니다. Sherlock 감사 완료.",
-    tok_4_title: "수수료.",
-    tok_4_text: "거래 수수료 일부가 하한가로 환류. 대출 개시 수수료: 일회성 3% 고정.",
-    memes_title: "밈",
-  },
-  bahasa: {
-    tagline: "PASAR PANIK. STOIC TIDAK.",
-    ca_label: "ALAMAT KONTRAK",
-    tab_home: "BERANDA", tab_rise: "KENAPA RISE", tab_tok: "TOKENOMIK", tab_memes: "MEME", tab_films: "FILM", tab_films: "FILM", films_title: "FILM",
-    copy: "SALIN", copy_done: "TERSALIN", coming_soon: "SEGERA HADIR",
-    rise_title: "KENAPA RISE.RICH",
-    rise_1_title: "Asetmu tidak bisa jadi nol.",
-    rise_1_text: "Setiap token di rise.rich punya harga dasar yang hanya bisa naik — dijaga oleh likuiditas milik protokol, bukan janji kosong. Harga dasar terkunci di sekitar 50% dari ATH. Bahkan saat semua orang jual, penjual terakhir pun tetap dapat bayaran.",
-    rise_2_title: "Pinjam tanpa bunga. Tanpa likuidasi.",
-    rise_2_text: "Pegang $STOIC dan pinjam sesuai nilai dasar kamu dari hari pertama. Biaya satu kali, nol bunga berkelanjutan, tanpa mesin likuidasi.",
-    rise_3_title: "Loop terus.",
-    rise_3_text: "Setor → pinjam → beli lagi → ulangi. Perbesar eksposurmu tanpa risiko forced unwind.",
-    rise_4_title: "Harga dasar naik saat orang lain jual.",
-    rise_4_text: "Sebagian biaya trading langsung masuk ke harga dasar. Jadi bahkan saat selloff, harga dasar terus naik.",
-    rise_5_title: "Likuiditas milik protokol.",
-    rise_5_text: "Tidak ada LP eksternal yang bisa kabur. Protokol adalah satu-satunya counterparty — selalu ada, selalu solvent.",
-    tok_title: "TOKENOMIK",
-    tok_1_title: "Fair launch.",
-    tok_1_text: "Tanpa presale, tanpa alokasi tim. $STOIC diluncurkan secara permissionless di rise.rich — semua orang masuk lewat bonding curve yang sama.",
-    tok_2_title: "Pasokan elastis.",
-    tok_2_text: "Setiap pembelian mencetak token baru, setiap penjualan membakarnya selamanya. Protokol memegang semua likuiditas.",
-    tok_3_title: "Mekanisme harga dasar.",
-    tok_3_text: "Seiring $STOIC naik, protokol mengalokasikan ulang likuiditas ke harga dasar. Diaudit oleh Sherlock.",
-    tok_4_title: "Biaya.",
-    tok_4_text: "Sebagian biaya trading platform kembali ke harga dasar. Biaya awal pinjaman: satu kali 3% flat fee.",
-    memes_title: "MEME",
-  }
-};
-
-let currentLang = 'en';
-
-// Dropdown open/close with delay to prevent flicker
-const dropdown = document.querySelector('.lang-dropdown');
-const menu = document.querySelector('.lang-menu');
-const trigger = document.getElementById('lang-trigger');
-let closeTimer = null;
-
-function openMenu() {
-  clearTimeout(closeTimer);
-  menu.classList.add('open');
-}
-
-function closeMenu(delay) {
-  clearTimeout(closeTimer);
-  closeTimer = setTimeout(() => menu.classList.remove('open'), delay || 150);
-}
-
-trigger.addEventListener('mouseenter', () => openMenu());
-trigger.addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
-menu.addEventListener('mouseenter', () => openMenu());
-dropdown.addEventListener('mouseleave', () => closeMenu(120));
-document.addEventListener('click', () => closeMenu(0));
-menu.addEventListener('click', (e) => e.stopPropagation());
-
-function setLang(lang, label) {
-  currentLang = lang;
-  if (label) document.getElementById('lang-trigger').childNodes[0].textContent = label;
-  document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
-  const btn = document.querySelector('.lang-option[data-lang="' + lang + '"]');
-  if (btn) btn.classList.add('active');
-
-  const t = translations[lang] || translations['en'];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
-  });
-
-  document.getElementById('copy-btn').textContent = t.copy;
-  document.documentElement.style.setProperty('--cs-text', '"' + t.coming_soon + '"');
-}
-
-// Handle browser back/forward
-window.addEventListener('popstate', (e) => {
-  const tab = e.state?.tab || 'home';
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(tab).classList.add('active');
-  document.querySelector('[data-tab="' + tab + '"]').classList.add('active');
-});
-
-// Handle direct URL access
-window.addEventListener('DOMContentLoaded', () => {
-  const path = window.location.pathname.replace('/', '').trim();
-  const validTabs = ['home', 'rise', 'tokenomics', 'memes', 'films'];
-  const tab = validTabs.includes(path) ? path : 'home';
-  if (tab !== 'home') showTab(tab);
-});
-
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLightbox();
-});
-
-
-function loadMoreMemes() {
-  const hidden = document.querySelectorAll('.meme-hidden');
-  let shown = 0;
-  hidden.forEach(card => {
-    if (shown < 4) {
-      card.classList.remove('meme-hidden');
-      card.style.animation = 'fadeUp 0.4s ease forwards';
-      shown++;
-    }
-  });
-  // Hide button if no more hidden
-  const remaining = document.querySelectorAll('.meme-hidden');
-  if (remaining.length === 0) {
-    const btn = document.getElementById('load-more-btn');
-    if (btn) btn.style.display = 'none';
-  }
-}
-
-</script>
-
+<!-- FILMS -->
 <div class="page" id="films">
-  <div class="inner" style="max-width:860px">
+  <div class="section-bg" style="background-image:url('https://res.cloudinary.com/dqgkxarez/image/upload/v1779175503/bg_films_nzi1tx.png');background-position:center top;"></div>
+  <div class="section-bg-overlay"></div>
+  <div class="inner-wide" style="position:relative;z-index:2;">
     <p class="page-label" data-i18n="films_title">FILMS</p>
-    <div class="films-grid">
 
-      <!-- EP 10 - Coming Soon -->
+    <!-- FEATURED EP09 -->
+    <div class="film-featured">
+      <a href="https://x.com/stoiconrise/status/2056349024320631272?s=20" target="_blank" style="display:block;text-decoration:none;position:relative;">
+        <img class="film-featured-thumb" src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779123296/Untitled_n2lzd6.png" alt="Wen Certified?">
+        <div class="film-featured-play-icon">▶</div>
+        <div class="film-rain-overlay"><canvas class="film-rain-canvas" id="film-rain-canvas"></canvas></div>
+        <div class="film-featured-overlay">
+          <div class="film-featured-badge">LATEST RELEASE</div>
+          <div class="film-featured-ep">EP. 09</div>
+          <div class="film-featured-title">Wen Certified?</div>
+          <div class="film-featured-desc">Unverified. Unfazed. Dancing anyway.</div>
+          <div class="film-featured-btn">▶ WATCH ON TWITTER</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="films-grid">
+      <!-- EP 10 -->
       <div class="film-card">
         <div class="film-thumb-link" style="cursor:default;">
-          <div class="film-thumb-img" style="background:linear-gradient(135deg,#1a1228,#0d0818);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:2rem;opacity:0.15;">🗿</span>
-          </div>
-          <div class="film-play-overlay">
-            <div class="film-soon-badge">COMING SOON</div>
-          </div>
+          <div class="film-thumb-img" style="background:linear-gradient(135deg,#0d0a1e,#07050f);display:flex;align-items:center;justify-content:center;"><span style="font-size:2rem;opacity:0.1;">🗿</span></div>
+          <div class="film-play-overlay"><div class="film-soon-badge">COMING SOON</div></div>
         </div>
-        <div class="film-info">
-          <span class="film-ep">EP. 10</span>
-          <div class="film-title">???</div>
-          <p class="film-desc">The story continues.</p>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 10</span><div class="film-title">???</div><p class="film-desc">The story continues.</p></div>
       </div>
-
-      <!-- EP 09 -->
-      <div class="film-card">
-        <a href="https://x.com/stoiconrise/status/2056349024320631272?s=20" target="_blank" class="film-thumb-link">
-          <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779123296/Untitled_n2lzd6.png" alt="Wen Certified?" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
-        </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 09</span>
-          <div class="film-title">Wen Certified?</div>
-          <p class="film-desc">Unverified. Unfazed. Dancing anyway.</p>
-          <a href="https://x.com/stoiconrise/status/2056349024320631272?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
-      </div>
-
       <!-- EP 08 -->
       <div class="film-card">
         <a href="https://x.com/risedotrich/status/2056143266438160712?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779080146/Untitled_speygq.png" alt="A Moment" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 08</span>
-          <div class="film-title">A Moment</div>
-          <p class="film-desc">The whole Rise ecosystem. One frame. Unfazed as ever.</p>
-          <a href="https://x.com/risedotrich/status/2056143266438160712?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 08</span><div class="film-title">A Moment</div><p class="film-desc">The whole Rise ecosystem. One frame. Unfazed as ever.</p><a href="https://x.com/risedotrich/status/2056143266438160712?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
       <!-- EP 07 -->
       <div class="film-card">
         <a href="https://x.com/stoiconrise/status/2055657961587196067?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/thumb_ep07_the_heist_dn5hxd.jpg" alt="The Heist" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 07</span>
-          <div class="film-title">The Heist</div>
-          <p class="film-desc">They didn't come for the vault.</p>
-          <a href="https://x.com/stoiconrise/status/2055657961587196067?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 07</span><div class="film-title">The Heist</div><p class="film-desc">They didn't come for the vault.</p><a href="https://x.com/stoiconrise/status/2055657961587196067?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
       <!-- EP 06 -->
       <div class="film-card">
         <a href="https://x.com/stoiconrise/status/2055214448248570025?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/thumb_ep06_i_love_milk_xcqs3u.jpg" alt="I Love Milk" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 06</span>
-          <div class="film-title">I Love Milk</div>
-          <p class="film-desc">800 years. never felt a thing.</p>
-          <a href="https://x.com/stoiconrise/status/2055214448248570025?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 06</span><div class="film-title">I Love Milk</div><p class="film-desc">800 years. never felt a thing.</p><a href="https://x.com/stoiconrise/status/2055214448248570025?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
       <!-- EP 05 -->
       <div class="film-card">
         <a href="https://x.com/stoiconrise/status/2054814419121819697?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/thumb_ep05_save_the_day_p0eifp.jpg" alt="Save The Day" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 05</span>
-          <div class="film-title">Save The Day</div>
-          <p class="film-desc">Different methods. Same result.</p>
-          <a href="https://x.com/stoiconrise/status/2054814419121819697?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 05</span><div class="film-title">Save The Day</div><p class="film-desc">Different methods. Same result.</p><a href="https://x.com/stoiconrise/status/2054814419121819697?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
       <!-- EP 04 -->
       <div class="film-card">
         <a href="https://x.com/stoiconrise/status/2054672961421160508?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/thumb_ep04_i_love_ponzi_me5g7y.jpg" alt="I Love Ponzi" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 04</span>
-          <div class="film-title">I Love Ponzi</div>
-          <p class="film-desc">He never speaks. But when he does.</p>
-          <a href="https://x.com/stoiconrise/status/2054672961421160508?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 04</span><div class="film-title">I Love Ponzi</div><p class="film-desc">He never speaks. But when he does.</p><a href="https://x.com/stoiconrise/status/2054672961421160508?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
       <!-- EP 03 -->
       <div class="film-card">
         <a href="https://x.com/stoiconrise/status/2054169727216365665?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/thumb_ep03_meet_capy_wot770.jpg" alt="Stoic Meet Capy" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 03</span>
-          <div class="film-title">Stoic Meet Capy</div>
-          <p class="film-desc">A ninja appears. Stoic doesn't flinch. Something unexpected happens.</p>
-          <a href="https://x.com/stoiconrise/status/2054169727216365665?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 03</span><div class="film-title">Stoic Meet Capy</div><p class="film-desc">A ninja appears. Stoic doesn't flinch. Something unexpected happens.</p><a href="https://x.com/stoiconrise/status/2054169727216365665?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
       <!-- EP 02 -->
       <div class="film-card">
         <a href="https://x.com/stoiconrise/status/2054131970779861326?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/thumb_ep02_meet_poatan_unhuuz.jpg" alt="Stoic Meet Poatan" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 02</span>
-          <div class="film-title">Stoic Meet Poatan</div>
-          <p class="film-desc">A chance encounter. Two legends. One unforgettable moment.</p>
-          <a href="https://x.com/stoiconrise/status/2054131970779861326?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 02</span><div class="film-title">Stoic Meet Poatan</div><p class="film-desc">A chance encounter. Two legends. One unforgettable moment.</p><a href="https://x.com/stoiconrise/status/2054131970779861326?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
       <!-- EP 01 -->
       <div class="film-card">
         <a href="https://x.com/stoiconrise/status/2054109962067128770?s=20" target="_blank" class="film-thumb-link">
           <img src="https://res.cloudinary.com/dqgkxarez/image/upload/v1779044672/thumb_ep01_arrived_qncy5l.jpg" alt="Arrived" class="film-thumb-img">
-          <div class="film-play-overlay">
-            <div class="film-play-btn">▶</div>
-          </div>
+          <div class="film-play-overlay"><div class="film-play-btn">▶</div></div>
         </a>
-        <div class="film-info">
-          <span class="film-ep">EP. 01</span>
-          <div class="film-title">Arrived</div>
-          <p class="film-desc">800 years of stillness. Then the floor called. The journey to rise.rich begins.</p>
-          <a href="https://x.com/stoiconrise/status/2054109962067128770?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a>
-        </div>
+        <div class="film-info"><span class="film-ep">EP. 01</span><div class="film-title">Arrived</div><p class="film-desc">800 years of stillness. Then the floor called. The journey to rise.rich begins.</p><a href="https://x.com/stoiconrise/status/2054109962067128770?s=20" target="_blank" class="films-watch-btn">▶ WATCH ON TWITTER</a></div>
       </div>
-
     </div>
   </div>
 </div>
 
-
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close" onclick="closeLightbox()">ESC / CLOSE</span>
   <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
 </div>
 
+<script>
+// RAIN
+(function(){
+  const c = document.getElementById('rain-canvas');
+  const ctx = c.getContext('2d');
+  let drops = [];
+  function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  for(let i=0;i<120;i++) drops.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,len:Math.random()*20+10,speed:Math.random()*3+2,op:Math.random()*0.3+0.05});
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    drops.forEach(d=>{
+      ctx.beginPath(); ctx.moveTo(d.x,d.y); ctx.lineTo(d.x-1,d.y+d.len);
+      ctx.strokeStyle=`rgba(180,210,255,${d.op})`; ctx.lineWidth=0.5; ctx.stroke();
+      d.y+=d.speed; if(d.y>c.height){d.y=-d.len;d.x=Math.random()*c.width;}
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
-</body></html>
+// FILM RAIN — fixed overlay on films page
+let filmRainAnimId = null;
+let filmAudioCtx = null, filmGain = null;
+
+function startFilmRainFull() {
+  const filmsPage = document.getElementById('films');
+  if (!filmsPage) return;
+
+  // Create or get canvas overlay
+  let overlay = document.getElementById('film-rain-global');
+  if (!overlay) {
+    overlay = document.createElement('canvas');
+    overlay.id = 'film-rain-global';
+    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:10;opacity:0;transition:opacity 1s ease;';
+    document.body.appendChild(overlay);
+  }
+
+  overlay.width = window.innerWidth;
+  overlay.height = window.innerHeight - 52;
+  overlay.style.opacity = '0.7';
+
+  const ctx = overlay.getContext('2d');
+  const drops = [];
+  for (let i = 0; i < 350; i++) {
+    drops.push({
+      x: Math.random() * overlay.width,
+      y: Math.random() * overlay.height,
+      len: Math.random() * 30 + 15,
+      speed: Math.random() * 9 + 6,
+      op: Math.random() * 0.6 + 0.3,
+      w: Math.random() * 1.2 + 0.5
+    });
+  }
+
+  if (filmRainAnimId) cancelAnimationFrame(filmRainAnimId);
+
+  function loop() {
+    ctx.clearRect(0, 0, overlay.width, overlay.height);
+    drops.forEach(d => {
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - 2, d.y + d.len);
+      ctx.strokeStyle = `rgba(190,220,255,${d.op})`;
+      ctx.lineWidth = d.w;
+      ctx.stroke();
+      d.y += d.speed;
+      if (d.y > overlay.height + d.len) { d.y = -d.len; d.x = Math.random() * overlay.width; }
+    });
+    filmRainAnimId = requestAnimationFrame(loop);
+  }
+  loop();
+
+  // Audio
+  if (filmAudioCtx) return;
+  try {
+    filmAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const sr = filmAudioCtx.sampleRate;
+    const buf = filmAudioCtx.createBuffer(2, sr * 4, sr);
+    for (let ch = 0; ch < 2; ch++) {
+      const d = buf.getChannelData(ch);
+      for (let i = 0; i < sr * 4; i++) d[i] = Math.random() * 2 - 1;
+    }
+    const src = filmAudioCtx.createBufferSource();
+    src.buffer = buf; src.loop = true;
+
+    const bp = filmAudioCtx.createBiquadFilter();
+    bp.type = 'bandpass'; bp.frequency.value = 800; bp.Q.value = 0.2;
+    const hp = filmAudioCtx.createBiquadFilter();
+    hp.type = 'highpass'; hp.frequency.value = 250;
+
+    filmGain = filmAudioCtx.createGain();
+    filmGain.gain.setValueAtTime(0, filmAudioCtx.currentTime);
+    filmGain.gain.linearRampToValueAtTime(0.25, filmAudioCtx.currentTime + 1.5);
+
+    src.connect(bp); bp.connect(hp); hp.connect(filmGain);
+    filmGain.connect(filmAudioCtx.destination);
+    src.start();
+  } catch(e) {}
+}
+
+function stopFilmRainFull() {
+  if (filmRainAnimId) { cancelAnimationFrame(filmRainAnimId); filmRainAnimId = null; }
+  const overlay = document.getElementById('film-rain-global');
+  if (overlay) overlay.style.opacity = '0';
+  if (filmGain && filmAudioCtx) {
+    filmGain.gain.linearRampToValueAtTime(0, filmAudioCtx.currentTime + 0.5);
+    setTimeout(() => { try { filmAudioCtx.close(); } catch(e){} filmAudioCtx = null; filmGain = null; }, 600);
+  }
+}
+
+// LIGHTBOX
+function openLightbox(src){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox').classList.add('open');}
+function closeLightbox(){
+  const lb=document.getElementById('lightbox');
+  lb.classList.add('closing'); lb.classList.remove('open');
+  setTimeout(()=>{lb.classList.remove('closing');lb.style.display='none';document.getElementById('lightbox-img').src='';lb.style.display='';},260);
+}
+document.addEventListener('click',function(e){const img=e.target.closest('.meme-card img');if(img){e.stopPropagation();openLightbox(img.src);}});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeLightbox();});
+
+// TABS
+function showTab(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector('[data-tab="'+id+'"]').classList.add('active');
+  window.history.pushState({tab:id},'',(id==='home'?'/':'/'+id));
+  const pr=document.getElementById('peek-rise'),pt=document.getElementById('peek-tokenomics');
+  pr.classList.remove('active'); pt.classList.remove('active');
+  if(id==='rise'){void pr.offsetWidth;pr.classList.add('active');}
+  else if(id==='tokenomics'){void pt.offsetWidth;pt.classList.add('active');}
+
+  // Film rain — start/stop based on tab (click = user gesture, bypasses autoplay)
+  if(id==='films'){
+    setTimeout(startFilmRainFull, 100);
+  } else {
+    stopFilmRainFull();
+  }
+}
+
+// COPY
+function copyCA(){
+  const txt=document.getElementById('ca').textContent;
+  const btn=document.getElementById('copy-btn');
+  const t=translations[currentLang]||translations['en'];
+  navigator.clipboard.writeText(txt).then(()=>{btn.textContent=t.copy_done;setTimeout(()=>btn.textContent=t.copy,1500);});
+}
+
+// LANG
+const dropdown=document.querySelector('.lang-dropdown');
+const menu=document.querySelector('.lang-menu');
+const trigger=document.getElementById('lang-trigger');
+let closeTimer=null;
+function openMenu(){clearTimeout(closeTimer);menu.classList.add('open');}
+function closeMenu(d){clearTimeout(closeTimer);closeTimer=setTimeout(()=>menu.classList.remove('open'),d||150);}
+trigger.addEventListener('mouseenter',()=>openMenu());
+trigger.addEventListener('click',(e)=>{e.stopPropagation();openMenu();});
+menu.addEventListener('mouseenter',()=>openMenu());
+dropdown.addEventListener('mouseleave',()=>closeMenu(120));
+document.addEventListener('click',()=>closeMenu(0));
+menu.addEventListener('click',(e)=>e.stopPropagation());
+
+const translations={
+  en:{tagline:"THE MARKET PANICS. STOIC DOESN'T.",ca_label:"CONTRACT ADDRESS",tab_home:"HOME",tab_rise:"WHY RISE",tab_tok:"TOKENOMICS",tab_memes:"MEMES",tab_films:"FILMS",films_title:"FILMS",copy:"COPY",copy_done:"COPIED",coming_soon:"COMING SOON",rise_title:"WHY RISE.RICH",rise_1_title:"Your bags can't go to zero.",rise_1_text:"Every token on rise.rich has a floor price that only ever goes up — enforced by protocol-owned liquidity, not promises. The floor tracks ~50% of all-time high. Even in a full selloff, the last seller still gets paid.",rise_2_title:"Borrow without interest. No liquidation.",rise_2_text:"Hold $STOIC and borrow against your floor value from day one. One flat fee. Zero ongoing interest. No liquidation engine — the floor is mathematically guaranteed, so there's nothing to liquidate.",rise_3_title:"Loop it.",rise_3_text:"Deposit → borrow → buy more → repeat. Amplify your exposure without risking forced unwinds. The floor holds no matter what.",rise_4_title:"The floor rises when others dump.",rise_4_text:"A portion of every trading fee flows directly back into the floor. So even during selloffs, the floor keeps climbing. Counterintuitive — but that's the mechanism.",rise_5_title:"Protocol-owned liquidity.",rise_5_text:"No external LPs that can disappear. No market makers that ghost when you need them. The protocol is the sole counterparty — always there, always solvent.",tok_title:"TOKENOMICS",tok_1_title:"Fair launch.",tok_1_text:"No presale. No team allocation. No insider bags. $STOIC launches permissionlessly on rise.rich — everyone enters through the same bonding curve.",tok_2_title:"Elastic supply.",tok_2_text:"Every buy mints a fresh token at the current price. Every sell burns it forever. The protocol holds all liquidity — no fragmentation, no external risk.",tok_3_title:"Floor mechanics.",tok_3_text:"As $STOIC appreciates, the protocol reallocates liquidity into the floor — permanently raising it in lockstep with price. Immutable and covered by smart contracts audited by Sherlock.",tok_4_title:"Fees.",tok_4_text:"Platform trading fees partially flow back into the floor. Borrow origination: one-time 3% flat fee. No ongoing interest. No surprise costs.",memes_title:"MEMES"},
+  zh:{tagline:"市场恐慌，STOIC 不动如山。",ca_label:"合约地址",tab_home:"首页",tab_rise:"为何选择 RISE",tab_tok:"代币经济",tab_memes:"表情包",tab_films:"影片",films_title:"影片",copy:"复制",copy_done:"已复制",coming_soon:"即将推出",rise_title:"为何选择 RISE.RICH",rise_1_title:"你的仓位不会归零。",rise_1_text:"rise.rich 上的每个代币都有一个只升不降的底价，由协议自有流动性强制执行。",rise_2_title:"零利率借款，无强制平仓。",rise_2_text:"持有 $STOIC 即可从第一天起以底价价值借款。",rise_3_title:"循环操作。",rise_3_text:"存入 → 借款 → 买入更多 → 重复。",rise_4_title:"别人抛售时，底价反而上涨。",rise_4_text:"每笔交易手续费的一部分直接回流至底价。",rise_5_title:"协议自有流动性。",rise_5_text:"没有可能消失的外部 LP。协议是唯一对手方。",tok_title:"代币经济",tok_1_title:"公平启动。",tok_1_text:"无预售，无团队分配，无内部筹码。",tok_2_title:"弹性供应。",tok_2_text:"每次买入铸造新代币，每次卖出永久销毁。",tok_3_title:"底价机制。",tok_3_text:"由经 Sherlock 审计的智能合约保障。",tok_4_title:"手续费。",tok_4_text:"借款起始费：一次性 3% 固定费用。",memes_title:"表情包"},
+  ja:{tagline:"市場はパニック。STOIC は動じない。",ca_label:"コントラクトアドレス",tab_home:"ホーム",tab_rise:"なぜ RISE？",tab_tok:"トークノミクス",tab_memes:"ミーム",tab_films:"フィルム",films_title:"フィルム",copy:"コピー",copy_done:"コピー済",coming_soon:"近日公開",rise_title:"なぜ RISE.RICH なのか",rise_1_title:"資産がゼロになることはない。",rise_1_text:"rise.rich 上のすべてのトークンは下限価格を持ち、それは上昇するのみです。",rise_2_title:"無利子借入。清算なし。",rise_2_text:"$STOIC を保有するだけで初日から借入可能。",rise_3_title:"ループする。",rise_3_text:"預入 → 借入 → 追加購入 → 繰り返し。",rise_4_title:"他者が売却するとき、下限は上昇する。",rise_4_text:"取引手数料の一部が直接下限に還流します。",rise_5_title:"プロトコル所有の流動性。",rise_5_text:"プロトコルが唯一の相手方として常に存在します。",tok_title:"トークノミクス",tok_1_title:"フェアローンチ。",tok_1_text:"プレセールなし、チーム配分なし。",tok_2_title:"弾力的な供給。",tok_2_text:"購入ごとに現在価格で新トークンをミント。",tok_3_title:"下限メカニズム。",tok_3_text:"Sherlock 監査済み。",tok_4_title:"手数料。",tok_4_text:"借入起算手数料：一回限り3%。",memes_title:"ミーム"},
+  ko:{tagline:"시장은 패닉. STOIC은 흔들리지 않는다.",ca_label:"컨트랙트 주소",tab_home:"홈",tab_rise:"RISE를 선택하는 이유",tab_tok:"토크노믹스",tab_memes:"밈",tab_films:"필름",films_title:"필름",copy:"복사",copy_done:"복사됨",coming_soon:"곧 출시",rise_title:"왜 RISE.RICH인가",rise_1_title:"자산이 0이 될 수 없습니다.",rise_1_text:"rise.rich의 모든 토큰은 하한가를 가지며, 이는 오직 상승만 합니다.",rise_2_title:"무이자 대출. 청산 없음.",rise_2_text:"$STOIC 보유 시 첫날부터 하한가 기준으로 대출 가능.",rise_3_title:"루프하세요.",rise_3_text:"예치 → 대출 → 추가 매수 → 반복.",rise_4_title:"남들이 팔 때 하한가가 오릅니다.",rise_4_text:"거래 수수료의 일부가 하한가로 환류됩니다.",rise_5_title:"프로토콜 소유 유동성.",rise_5_text:"프로토콜이 유일한 거래 상대방으로 항상 존재합니다.",tok_title:"토크노믹스",tok_1_title:"페어 런치.",tok_1_text:"프리세일 없음, 팀 물량 없음.",tok_2_title:"탄력적 공급.",tok_2_text:"매수 시 현재 가격으로 새 토큰 발행, 매도 시 영구 소각.",tok_3_title:"하한가 메커니즘.",tok_3_text:"Sherlock 감사 완료.",tok_4_title:"수수료.",tok_4_text:"대출 개시 수수료: 일회성 3% 고정.",memes_title:"밈"},
+  bahasa:{tagline:"PASAR PANIK. STOIC TIDAK.",ca_label:"ALAMAT KONTRAK",tab_home:"BERANDA",tab_rise:"KENAPA RISE",tab_tok:"TOKENOMIK",tab_memes:"MEME",tab_films:"FILM",films_title:"FILM",copy:"SALIN",copy_done:"TERSALIN",coming_soon:"SEGERA HADIR",rise_title:"KENAPA RISE.RICH",rise_1_title:"Asetmu tidak bisa jadi nol.",rise_1_text:"Setiap token di rise.rich punya harga dasar yang hanya bisa naik.",rise_2_title:"Pinjam tanpa bunga. Tanpa likuidasi.",rise_2_text:"Pegang $STOIC dan pinjam sesuai nilai dasar kamu dari hari pertama.",rise_3_title:"Loop terus.",rise_3_text:"Setor → pinjam → beli lagi → ulangi.",rise_4_title:"Harga dasar naik saat orang lain jual.",rise_4_text:"Sebagian biaya trading langsung masuk ke harga dasar.",rise_5_title:"Likuiditas milik protokol.",rise_5_text:"Protokol adalah satu-satunya counterparty — selalu ada, selalu solvent.",tok_title:"TOKENOMIK",tok_1_title:"Fair launch.",tok_1_text:"Tanpa presale, tanpa alokasi tim.",tok_2_title:"Pasokan elastis.",tok_2_text:"Setiap pembelian mencetak token baru, setiap penjualan membakarnya selamanya.",tok_3_title:"Mekanisme harga dasar.",tok_3_text:"Diaudit oleh Sherlock.",tok_4_title:"Biaya.",tok_4_text:"Biaya awal pinjaman: satu kali 3% flat fee.",memes_title:"MEME"}
+};
+
+let currentLang='en';
+function setLang(lang,label){
+  currentLang=lang;
+  if(label)document.getElementById('lang-trigger').childNodes[0].textContent=label;
+  document.querySelectorAll('.lang-option').forEach(b=>b.classList.remove('active'));
+  const btn=document.querySelector('.lang-option[data-lang="'+lang+'"]');
+  if(btn)btn.classList.add('active');
+  const t=translations[lang]||translations['en'];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n');if(t[key])el.textContent=t[key];});
+  document.getElementById('copy-btn').textContent=t.copy;
+  document.documentElement.style.setProperty('--cs-text','"'+t.coming_soon+'"');
+}
+
+window.addEventListener('popstate',(e)=>{
+  const tab=e.state?.tab||'home';
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  document.querySelector('[data-tab="'+tab+'"]').classList.add('active');
+});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const path=window.location.pathname.replace('/','').trim();
+  const validTabs=['home','rise','tokenomics','memes','films'];
+  const tab=validTabs.includes(path)?path:'home';
+  if(tab!=='home')showTab(tab);
+});
+</script>
+</body>
+</html>
