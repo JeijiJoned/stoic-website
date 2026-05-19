@@ -359,11 +359,11 @@ nav {
 .lang-option.active { color: var(--amber); }
 
 /* MOAI PEEK */
-.moai-peek { position: fixed; z-index: 50; pointer-events: none; width: 80px; opacity: 0; }
+.moai-peek { position: fixed; z-index: 100; pointer-events: none; width: 80px; opacity: 0; mix-blend-mode: lighten; }
 .moai-peek-bottom { bottom: -320px; left: 48px; }
 .moai-peek-top { top: -320px; right: 48px; transform: rotate(180deg); }
-@keyframes peekFromBottom { 0%{opacity:0;transform:translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:translateY(-180px)} 60%{opacity:1;transform:translateY(-180px)} 82%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(0)} }
-@keyframes peekFromTop { 0%{opacity:0;transform:rotate(180deg) translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:rotate(180deg) translateY(-180px)} 60%{opacity:1;transform:rotate(180deg) translateY(-180px)} 80%{opacity:1;transform:rotate(180deg) translateY(0)} 100%{opacity:0;transform:rotate(180deg) translateY(0)} }
+@keyframes peekFromBottom { 0%{opacity:0;transform:translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:translateY(-300px)} 60%{opacity:1;transform:translateY(-300px)} 82%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(0)} }
+@keyframes peekFromTop { 0%{opacity:0;transform:rotate(180deg) translateY(0)} 8%{opacity:1} 25%{opacity:1;transform:rotate(180deg) translateY(-300px)} 60%{opacity:1;transform:rotate(180deg) translateY(-300px)} 80%{opacity:1;transform:rotate(180deg) translateY(0)} 100%{opacity:0;transform:rotate(180deg) translateY(0)} }
 .moai-peek-bottom.active { animation: peekFromBottom 9s ease-in-out forwards; }
 .moai-peek-top.active { animation: peekFromTop 9s ease-in-out forwards; }
 
@@ -650,7 +650,7 @@ function startFilmRainFull() {
   if (!overlay) {
     overlay = document.createElement('canvas');
     overlay.id = 'film-rain-global';
-    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:2;opacity:0;transition:opacity 1s ease;';
+    overlay.style.cssText = 'position:fixed;top:52px;left:0;right:0;bottom:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:4;opacity:0;transition:opacity 1s ease;mix-blend-mode:screen;';
     document.body.appendChild(overlay);
   }
 
@@ -709,7 +709,7 @@ function startFilmRainFull() {
 
     filmGain = filmAudioCtx.createGain();
     filmGain.gain.setValueAtTime(0, filmAudioCtx.currentTime);
-    filmGain.gain.linearRampToValueAtTime(0.25, filmAudioCtx.currentTime + 1.5);
+    filmGain.gain.linearRampToValueAtTime(0.12, filmAudioCtx.currentTime + 1.5);
 
     src.connect(bp); bp.connect(hp); hp.connect(filmGain);
     filmGain.connect(filmAudioCtx.destination);
